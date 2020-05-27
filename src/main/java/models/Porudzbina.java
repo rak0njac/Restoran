@@ -19,8 +19,6 @@ public class Porudzbina {
     @Column(name = "vreme")
     private Time vreme;
 
-    @Column(name = "iDKorisnik")
-    private int iDKorisnik;
 
     @ManyToOne
     private Korisnik korisnik;
@@ -57,12 +55,5 @@ public class Porudzbina {
         this.vreme = vreme;
     }
 
-    public int getiDKorisnik() {
-        return iDKorisnik;
-    }
-
-    public void setiDKorisnik(int iDKorisnik) {
-        this.iDKorisnik = iDKorisnik;
-    }
 
 }
