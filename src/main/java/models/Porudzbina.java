@@ -19,8 +19,11 @@ public class Porudzbina {
     @Column(name = "vreme")
     private Time vreme;
 
-
+    @Column(name = "iDKorisnik")
     private int iDKorisnik;
+
+    @ManyToOne
+    private Korisnik korisnik;
 
     public int getiDPorudzbina() {
         return iDPorudzbina;

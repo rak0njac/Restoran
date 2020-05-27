@@ -3,6 +3,7 @@ package models;
 import org.aspectj.bridge.IMessage;
 
 import javax.persistence.*;
+import java.util.Set;
 
 @Entity
 @Table(name = "korisniks")
@@ -35,6 +36,10 @@ public class Korisnik {
 
     @Column(name = "tip")
     private String tip;
+
+    @OneToMany(cascade = CascadeType.ALL)
+    @JoinColumn(name = "iDPorudzbina")
+    private Set<Porudzbina> Porudzbinas;
 
     public int getiDKorisnik() {
         return iDKorisnik;
