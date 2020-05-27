@@ -1,10 +1,21 @@
 package models;
 
+import javax.persistence.Entity;
+import javax.persistence.Table;
+import javax.persistence.*;
+
+@Entity
+@Table(name = "porudzbina_proizvods")
 public class Porudzbina_proizvod {
     private int iDPorudzbina;
     private int iDProizvod;
+
+    @Column(name = "kolicina")
     private int kolicina;
+
+    @Column(name = "cena")
     private int cena;
+
 
     public int getiDPorudzbina() {
         return iDPorudzbina;

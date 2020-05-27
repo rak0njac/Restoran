@@ -1,14 +1,39 @@
 package models;
 
+import org.aspectj.bridge.IMessage;
+
+import javax.persistence.*;
+
+@Entity
+@Table(name = "korisniks")
 public class Korisnik {
+    @Id
+    @GeneratedValue(strategy = GenerationType.AUTO)
     private int iDKorisnik;
+
+    @Column(name = "email")
+   //@NotBlank(message= "Email cannot be blank")
     private String email;
+
+    @Column(name = "adresa")
     private String adresa;
+
+    @Column(name = "ime")
     private String ime;
+
+    @Column(name = "prezime")
     private String prezime;
+
+    @Column(name = "telefon")
     private String telefon;
+
+    @Column(name = "username")
     private String username;
+
+    @Column(name = "password")
     private String password;
+
+    @Column(name = "tip")
     private String tip;
 
     public int getiDKorisnik() {

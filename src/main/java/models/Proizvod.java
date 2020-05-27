@@ -1,11 +1,28 @@
 package models;
 
+import javax.persistence.*;
+
+@Entity
+@Table(name = "proizvods")
 public class Proizvod {
+
+    @Id
+    @GeneratedValue(strategy = GenerationType.AUTO)
     private int iDProizvod;
+
+    @Column(name = "naziv")
     private String naziv;
+
+    @Column(name = "vrsta")
     private String vrsta;
+
+    @Column(name = "opis")
     private String opis;
+
+    @Column(name = "cena")
     private int cena;
+
+    @Column(name = "slika")
     private String slika;
 
     public int getiDProizvod() {
