@@ -7,8 +7,17 @@ import javax.persistence.*;
 @Entity
 @Table(name = "porudzbina_proizvods")
 public class Porudzbina_proizvod {
-    private int iDPorudzbina;
-    private int iDProizvod;
+
+    @ManyToOne
+    @MapsId("iDPorudzbina")
+    @JoinColumn(name = "iDPorudzbina")
+    Porudzbina porudzbina;
+
+    @ManyToOne
+    @MapsId("iDProizvod")
+    @JoinColumn(name = "iDProizvod")
+    Proizvod proizvod;
+
 
     @Column(name = "kolicina")
     private int kolicina;
@@ -16,21 +25,20 @@ public class Porudzbina_proizvod {
     @Column(name = "cena")
     private int cena;
 
-
-    public int getiDPorudzbina() {
-        return iDPorudzbina;
+    public Porudzbina getPorudzbina() {
+        return porudzbina;
     }
 
-    public void setiDPorudzbina(int iDPorudzbina) {
-        this.iDPorudzbina = iDPorudzbina;
+    public void setPorudzbina(Porudzbina porudzbina) {
+        this.porudzbina = porudzbina;
     }
 
-    public int getiDProizvod() {
-        return iDProizvod;
+    public Proizvod getProizvod() {
+        return proizvod;
     }
 
-    public void setiDProizvod(int iDProizvod) {
-        this.iDProizvod = iDProizvod;
+    public void setProizvod(Proizvod proizvod) {
+        this.proizvod = proizvod;
     }
 
     public int getKolicina() {

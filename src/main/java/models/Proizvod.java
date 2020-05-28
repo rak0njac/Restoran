@@ -1,6 +1,7 @@
 package models;
 
 import javax.persistence.*;
+import java.util.Set;
 
 @Entity
 @Table(name = "proizvods")
@@ -24,6 +25,9 @@ public class Proizvod {
 
     @Column(name = "slika")
     private String slika;
+
+    @OneToMany(mappedBy = "proizvod")
+    Set<Porudzbina_proizvod> porudzbina_proizvods;
 
     public int getiDProizvod() {
         return iDProizvod;

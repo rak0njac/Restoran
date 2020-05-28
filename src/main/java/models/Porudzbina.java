@@ -3,6 +3,8 @@ package models;
 import javax.persistence.*;
 import java.sql.Time;
 import java.util.Date;
+import java.util.Set;
+
 @Entity
 @Table(name = "porudzbinas")
 public class Porudzbina {
@@ -22,6 +24,9 @@ public class Porudzbina {
 
     @ManyToOne
     private Korisnik korisnik;
+
+    @OneToMany(mappedBy = "porudzbina")
+    Set<Porudzbina_proizvod> porudzbina_proizvods;
 
     public int getiDPorudzbina() {
         return iDPorudzbina;

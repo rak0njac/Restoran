@@ -19,6 +19,7 @@
 	</properties>
 
 	<dependencies>
+
 		<dependency>
 			<groupId>org.springframework.boot</groupId>
 			<artifactId>spring-boot-starter-data-jpa</artifactId>
@@ -44,7 +45,14 @@
 				</exclusion>
 			</exclusions>
 		</dependency>
+<!--&lt;!&ndash;		<dependency>&ndash;&gt;-->
+<!--			<groupId>org.hibernate</groupId>-->
+<!--			<artifactId>hibernate-validator</artifactId>-->
+<!--			<version>6.0.20.Final</version>-->
+<!--		</dependency>-->
 	</dependencies>
+
+
 
 	<build>
 		<plugins>
