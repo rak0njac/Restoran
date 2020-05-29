@@ -1,4 +1,4 @@
-package models;
+package com.grupaF.restoran.models;
 
 import javax.persistence.Column;
 import javax.persistence.Embeddable;

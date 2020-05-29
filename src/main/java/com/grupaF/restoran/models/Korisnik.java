@@ -1,6 +1,4 @@
-package models;
-
-import org.aspectj.bridge.IMessage;
+package com.grupaF.restoran.models;
 
 import javax.persistence.*;
 import java.util.Set;
