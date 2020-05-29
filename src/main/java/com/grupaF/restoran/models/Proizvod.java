@@ -1,6 +1,8 @@
 package com.grupaF.restoran.models;
 
 import javax.persistence.*;
+import javax.validation.constraints.Min;
+import javax.validation.constraints.Size;
 import java.util.Set;
 
 @Entity
@@ -12,15 +14,22 @@ public class Proizvod {
     private int iDProizvod;
 
     @Column(name = "naziv")
+    @Size(min = 1, max = 200, message
+            = "Naziv mora imati izmedju 10 i 200 karaktera")
     private String naziv;
 
     @Column(name = "vrsta")
+    @Size(min = 1, max = 200, message
+            = "Vrsta mora imati izmedju 1 i 200 karaktera")
     private String vrsta;
 
     @Column(name = "opis")
+    @Size(min = 10, max = 200, message
+            = "Opis mora imati izmedju 10 i 200 karaktera")
     private String opis;
 
     @Column(name = "cena")
+    @Min(value= 1, message="Cena mora biti veca od 0")
     private int cena;
 
     @Column(name = "slika")

@@ -1,6 +1,7 @@
 package com.grupaF.restoran.models;
 
 import javax.persistence.*;
+import javax.validation.constraints.*;
 import java.util.Set;
 
 @Entity
@@ -11,28 +12,38 @@ public class Korisnik {
     private int iDKorisnik;
 
     @Column(name = "email")
-   //@NotBlank(message= "Email cannot be blank")
+    @NotBlank(message= "Morate uneti Email")
+    @Email(message = "Email mora biti validan")
     private String email;
 
     @Column(name = "adresa")
+    @NotBlank(message= "Morate uneti adresu")
     private String adresa;
 
     @Column(name = "ime")
+    @NotBlank(message= "Morate uneti ime")
     private String ime;
 
     @Column(name = "prezime")
+    @NotBlank(message= "Morate uneti prezime")
     private String prezime;
 
     @Column(name = "telefon")
+    @NotBlank(message= "Morate uneti telefon")
     private String telefon;
 
     @Column(name = "username")
+    @NotBlank(message= "Morate uneti username")
     private String username;
 
     @Column(name = "password")
+    @NotBlank(message= "Morate uneti password")
+    @Size(min = 7, max = 50, message
+            = "Password mora imate vise od 7 karaktera i manje od 50")
     private String password;
 
     @Column(name = "tip")
+    @NotBlank(message= "Morate uneti tip")
     private String tip;
 
     @OneToMany(cascade = CascadeType.ALL)

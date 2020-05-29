@@ -3,6 +3,7 @@ package com.grupaF.restoran.models;
 import javax.persistence.Entity;
 import javax.persistence.Table;
 import javax.persistence.*;
+import javax.validation.constraints.Min;
 
 @Entity
 @Table(name = "porudzbina_proizvods")
@@ -21,8 +22,8 @@ public class Porudzbina_proizvod {
     @JoinColumn(name = "iDProizvod")
     Proizvod proizvod;
 
-
     @Column(name = "kolicina")
+    @Min(value= 1, message="Kolicina mora biti veca od 0")
     private int kolicina;
 
     @Column(name = "cena")
