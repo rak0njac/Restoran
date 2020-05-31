@@ -1,16 +1,13 @@
-package com.grupaF.restoran.repositories;
+package com.grupaF.restoran.services;
 
 import com.grupaF.restoran.models.Korisnik;
-import org.springframework.data.jpa.repository.JpaRepository;
 
-import java.util.*;
+import java.util.List;
 
-public interface KorisnikRepository extends JpaRepository<Korisnik, Integer> {
-
+public interface KorisnikService {
     List<Korisnik> finBykorisnikId(int iDKorisnik);
 
     List<Korisnik> findByUserNameAndPassword(String username, String password);
-
 
     void delete(Korisnik korisnik);
 
@@ -18,3 +15,4 @@ public interface KorisnikRepository extends JpaRepository<Korisnik, Integer> {
 
     void edit(Korisnik korisnik);
 }
+
