@@ -27,6 +27,11 @@ public class KorisnikServiceImpl implements KorisnikService {
     }
 
     @Override
+    public List<Korisnik> findAll() {
+        return this.korisnikRepository.findAll();
+    }
+
+    @Override
     public void delete(Korisnik korisnik) {
         korisnikRepository.delete(korisnik);
     }
@@ -39,7 +44,9 @@ public class KorisnikServiceImpl implements KorisnikService {
 
     @Override
     public void edit(Korisnik korisnik) {
-      //korisnikRepository.
+      korisnikRepository.save(korisnik);
 
     }
+
+
 }

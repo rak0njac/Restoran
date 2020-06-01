@@ -34,6 +34,6 @@ public class ProizvodServiceImpl implements ProizvodService{
 
     @Override
     public void edit(Proizvod proizvod) {
-         //
+        proizvodRepository.save(proizvod);
     }
 }

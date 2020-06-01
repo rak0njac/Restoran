@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.w3.org/1999/xhtml">
+
+<head>
+    <meta charset="UTF-8">
+    <title>Korisnici</title>
+</head>
+<body>
+
+<h1>Pretraga korisnika</h1>
+
+<div>
+<div th:switch="${korisnici}">
+    <h2 th:case="null">Nema korisnika!</h2>
+    <div th:case="*">
+        <h2>Korisnici</h2>
+        <table>
+            <thead>
+            <tr>
+                <th>ID korisnika</th>
+                <th>Ime</th>
+                <th>Prezime</th>
+                <th>Username</th>
+                <th>Telefon</th>
+                <th>Email</th>
+                <th>Adresa</th>
+            </tr>
+            </thead>
+            <tbody>
+            <tr th:each="korisnik : ${korisnici}">
+                <td th:text="${korisnici.iDKorisnik}"></td>
+                <td th:text="${korisnici.ime}"></td>
+                <td th:text="${korisnici.prezime}"></td>
+                <td th:text="${korisnici.username}"></td>
+                <td th:text="${korisnici.telefon}"></td>
+                <td th:text="${korisnici.email}"></td>
+                <td th:text="${korisnici.adresa}"></td>
+            </tr>
+            </tbody>
+        </table>
+    </div>
+</div>
+
+</div>
+
+
+
+</body>
+</html>

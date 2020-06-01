@@ -10,6 +10,8 @@ public interface KorisnikService {
 
     Optional<Korisnik>findByUsernameAndPassword(String username, String password);
 
+    List<Korisnik>findAll();
+
     void delete(Korisnik korisnik);
 
     void insert(Korisnik korisnik);
