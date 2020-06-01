@@ -11,7 +11,7 @@ public class Proizvod {
 
     @Id
     @GeneratedValue(strategy = GenerationType.AUTO)
-    private int iDProizvod;
+    private Long iDProizvod;
 
     @Column(name = "naziv")
     @Size(min = 1, max = 200, message
@@ -38,11 +38,11 @@ public class Proizvod {
     @OneToMany(mappedBy = "proizvod")
     Set<Porudzbina_proizvod> porudzbina_proizvods;
 
-    public int getiDProizvod() {
+    public Long getiDProizvod() {
         return iDProizvod;
     }
 
-    public void setiDProizvod(int iDProizvod) {
+    public void setiDProizvod(Long iDProizvod) {
         this.iDProizvod = iDProizvod;
     }
 

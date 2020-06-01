@@ -6,6 +6,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import java.util.List;
+import java.util.Optional;
 
 @Service
 public class KorisnikServiceImpl implements KorisnikService {
@@ -16,30 +17,29 @@ public class KorisnikServiceImpl implements KorisnikService {
 
 
     @Override
-    public List<Korisnik> finBykorisnikId(int iDKorisnik) {
-        return this.korisnikRepository.finBykorisnikId(iDKorisnik);
+    public Optional<Korisnik> findBykorisnikId(Long iDKorisnik) {
+        return this.korisnikRepository.findById(iDKorisnik);
     }
 
     @Override
-    public List<Korisnik> findByUserNameAndPassword(String username, String password) {
-        return this.korisnikRepository.findByUserNameAndPassword(username, password);
+    public Optional<Korisnik> findByUsernameAndPassword(String username, String password) {
+        return this.korisnikRepository.findByUsernameAndPassword(username, password);
     }
 
     @Override
     public void delete(Korisnik korisnik) {
         korisnikRepository.delete(korisnik);
-
     }
 
     @Override
     public void insert(Korisnik korisnik) {
-        korisnikRepository.insert(korisnik);
+        korisnikRepository.save(korisnik);
 
     }
 
     @Override
     public void edit(Korisnik korisnik) {
-        korisnikRepository.edit(korisnik);
+      //korisnikRepository.
 
     }
 }

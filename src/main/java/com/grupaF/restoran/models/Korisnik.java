@@ -9,7 +9,7 @@ import java.util.Set;
 public class Korisnik {
     @Id
     @GeneratedValue(strategy = GenerationType.AUTO)
-    private int iDKorisnik;
+    private Long iDKorisnik;
 
     @Column(name = "email")
     @NotBlank(message= "Morate uneti Email")
@@ -46,15 +46,17 @@ public class Korisnik {
     @NotBlank(message= "Morate uneti tip")
     private String tip;
 
-    @OneToMany(cascade = CascadeType.ALL)
-    @JoinColumn(name = "iDPorudzbina")
+    @OneToMany(mappedBy = "korisnik",
+            cascade = CascadeType.ALL,
+            orphanRemoval = true)
+
     private Set<Porudzbina> Porudzbinas;
 
-    public int getiDKorisnik() {
+    public Long getiDKorisnik() {
         return iDKorisnik;
     }
 
-    public void setiDKorisnik(int iDKorisnik) {
+    public void setiDKorisnik(Long iDKorisnik) {
         this.iDKorisnik = iDKorisnik;
     }
 

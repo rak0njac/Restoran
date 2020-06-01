@@ -8,16 +8,16 @@ import java.io.Serializable;
 public class Porudzbina_proizvod_key implements Serializable {
 
     @Column(name = "iDPorudzbina")
-    int iDPorudzbina;
+    Long iDPorudzbina;
 
     @Column(name = "iDProizvod")
     int iDProizvod;
 
-    public int getiDPorudzbina() {
+    public Long getiDPorudzbina() {
         return iDPorudzbina;
     }
 
-    public void setiDPorudzbina(int iDPorudzbina) {
+    public void setiDPorudzbina(Long iDPorudzbina) {
         this.iDPorudzbina = iDPorudzbina;
     }
 

@@ -5,16 +5,10 @@ import org.springframework.data.jpa.repository.JpaRepository;
 
 import java.util.*;
 
-public interface KorisnikRepository extends JpaRepository<Korisnik, Integer> {
+public interface KorisnikRepository extends JpaRepository<Korisnik, Long> {
 
-    List<Korisnik> finBykorisnikId(int iDKorisnik);
+    Optional<Korisnik> findByUsernameAndPassword(String username, String password);
 
-    List<Korisnik> findByUserNameAndPassword(String username, String password);
+    List<Korisnik> findByEmail(String email);
 
-
-    void delete(Korisnik korisnik);
-
-    void insert(Korisnik korisnik);
-
-    void edit(Korisnik korisnik);
 }

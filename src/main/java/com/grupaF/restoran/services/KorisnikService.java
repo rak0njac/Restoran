@@ -3,11 +3,12 @@ package com.grupaF.restoran.services;
 import com.grupaF.restoran.models.Korisnik;
 
 import java.util.List;
+import java.util.Optional;
 
 public interface KorisnikService {
-    List<Korisnik> finBykorisnikId(int iDKorisnik);
+    Optional<Korisnik> findBykorisnikId(Long iDKorisnik);
 
-    List<Korisnik> findByUserNameAndPassword(String username, String password);
+    Optional<Korisnik>findByUsernameAndPassword(String username, String password);
 
     void delete(Korisnik korisnik);
 
