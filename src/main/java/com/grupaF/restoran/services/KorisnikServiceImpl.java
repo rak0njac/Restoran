@@ -13,7 +13,7 @@ public class KorisnikServiceImpl implements KorisnikService {
 
     @Autowired
     private KorisnikRepository korisnikRepository;
-
+    private Object Optional;
 
 
     @Override
@@ -32,7 +32,7 @@ public class KorisnikServiceImpl implements KorisnikService {
     }
 
     @Override
-    public void delete(Korisnik korisnik) {
+    public void delete(Optional<Korisnik> korisnik) {
         korisnikRepository.delete(korisnik);
     }
 

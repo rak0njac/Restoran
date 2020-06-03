@@ -12,7 +12,7 @@ public interface KorisnikService {
 
     List<Korisnik>findAll();
 
-    void delete(Korisnik korisnik);
+    void delete(Optional<Korisnik> korisnik);
 
     Korisnik insert(Korisnik korisnik);
 
