@@ -1,0 +1,63 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.w3.org/1999/xhtml">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <style>
+        .first{
+            margin:0px auto;
+            margin-top: 5%;
+            width: 30%;
+
+        }
+        fieldset{
+            margin:0px auto;
+            margin-bottom: 10%;
+            border:2px solid darkgrey;
+            width: 35%;
+        }
+        legend{
+            color:black;
+        }
+        h2{
+            margin-left: 30%;
+        }
+    </style>
+</head>
+<body>
+<div class="first">
+  <form th:action="@{/login}"
+        method="post">
+        <fieldset>
+            <legend>Logovanje</legend>
+            <label>Korisničko ime:</label><br>
+            <input type="text" name="korisnicko"><br>
+            <label>Šifra:</label><br>
+            <input type="text" name="sifra"><br><br>
+            <input type="submit" value="Ulogujte se"><br>
+        </fieldset>
+    </form>
+    <form th:action="@{/registracija}" method="post">
+
+        <fieldset>
+            <legend>Registrovanje</legend>
+            <label>Korisničko ime:</label><br>
+            <input type="text" name="username"><br>
+            <label>Šifra:</label><br>
+            <input type="password" name="password"><br>
+            <label>Ime:</label><br>
+            <input type="text" name="ime"><br>
+            <label>Prezime:</label><br>
+            <input type="text" name="prezime"><br>
+            <label>Telefon:</label><br>
+            <input type="text" name="telefon"><br>
+            <label>E-mail</label><br>
+            <input type="email" name="email"><br>
+            <label>Adresa:</label><br>
+            <input type="text" name="address"><br><br>
+            <input type="submit" value="Registruj se"><br>
+        </fieldset>
+    </form>
+</div>
+</body>
+</html>

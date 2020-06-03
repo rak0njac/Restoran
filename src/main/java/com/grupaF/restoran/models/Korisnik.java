@@ -43,7 +43,6 @@ public class Korisnik {
     private String password;
 
     @Column(name = "tip")
-    @NotBlank(message= "Morate uneti tip")
     private String tip;
 
     @OneToMany(mappedBy = "korisnik",

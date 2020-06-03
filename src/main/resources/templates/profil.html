@@ -4,12 +4,25 @@
 <head>
     <meta charset="UTF-8">
     <title>Korisnici</title>
+    <style>
+        .first{
+            margin: 0px auto;
+            margin-top: 5%;
+            width:60%;
+        }
+        h1, h2{
+            text-align: center;
+        }
+        table{
+            margin-top: 1%;
+            margin-left: 15%;
+
+        }
+    </style>
 </head>
 <body>
-
-<h1>Pretraga korisnika</h1>
-
-<div>
+<div class="first">
+    <h1>Pretraga korisnika</h1>
 <div th:switch="${korisnici}">
     <h2 th:case="null">Nema korisnika!</h2>
     <div th:case="*">

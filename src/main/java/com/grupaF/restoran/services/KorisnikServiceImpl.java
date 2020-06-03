@@ -37,14 +37,13 @@ public class KorisnikServiceImpl implements KorisnikService {
     }
 
     @Override
-    public void insert(Korisnik korisnik) {
-        korisnikRepository.save(korisnik);
+    public Korisnik insert(Korisnik korisnik) {
+        return korisnikRepository.save(korisnik);
 
     }
 
     @Override
-    public void edit(Korisnik korisnik) {
-      korisnikRepository.save(korisnik);
+    public Korisnik edit(Korisnik korisnik) { return korisnikRepository.save(korisnik);
 
     }
 

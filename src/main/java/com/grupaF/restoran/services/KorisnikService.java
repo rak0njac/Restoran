@@ -14,8 +14,8 @@ public interface KorisnikService {
 
     void delete(Korisnik korisnik);
 
-    void insert(Korisnik korisnik);
+    Korisnik insert(Korisnik korisnik);
 
-    void edit(Korisnik korisnik);
+    Korisnik edit(Korisnik korisnik);
 }
 
