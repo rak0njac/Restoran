@@ -18,11 +18,31 @@
             margin-left: 15%;
 
         }
+        #pretraga{
+            margin: 0px auto;
+        }
+
     </style>
 </head>
 <body>
+
 <div class="first">
     <h1>Pretraga korisnika</h1>
+    <div >
+
+        <form th:action="@{/iDKorisnik}" method="post">
+            <table id="pretraga" border="2">
+                <tr>
+            <td>ID korisnika:</td>
+            <td><input type="text" name="id"><br></td>
+                </tr>
+                <tr>
+                    <td colspan="2"> <input type="submit" value="Pretraga" ><input type="submit" value="Obrisi" > <input type="submit" value="Izmeni" ></td>
+                </tr>
+            </table>
+        </form>
+
+    </div>
 <div th:switch="${korisnici}">
     <h2 th:case="null">Nema korisnika!</h2>
     <div th:case="*">

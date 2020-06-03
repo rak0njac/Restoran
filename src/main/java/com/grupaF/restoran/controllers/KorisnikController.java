@@ -26,7 +26,7 @@ public class KorisnikController {
             model.addAttribute("korisnik", k.get());
         }
 
-        return "korisnik";
+        return "profil";
 
     }
 
