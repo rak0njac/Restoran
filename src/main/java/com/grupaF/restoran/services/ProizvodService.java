@@ -4,6 +4,7 @@ import com.grupaF.restoran.models.Korisnik;
 import com.grupaF.restoran.models.Proizvod;
 
 import java.util.List;
+import java.util.Optional;
 
 public interface ProizvodService {
 
