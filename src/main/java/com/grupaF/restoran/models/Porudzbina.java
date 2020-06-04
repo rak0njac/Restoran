@@ -21,7 +21,6 @@ public class Porudzbina {
     @Column(name = "vreme")
     private Time vreme;
 
-
     @ManyToOne
     private Korisnik korisnik;
 

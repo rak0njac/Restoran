@@ -15,7 +15,6 @@ public class KorisnikServiceImpl implements KorisnikService {
     private KorisnikRepository korisnikRepository;
     private Object Optional;
 
-
     @Override
     public Optional<Korisnik> findBykorisnikId(Long iDKorisnik) {
         return this.korisnikRepository.findById(iDKorisnik);
@@ -32,19 +31,23 @@ public class KorisnikServiceImpl implements KorisnikService {
     }
 
     @Override
-    public void delete(Optional<Korisnik> korisnik) {
-        korisnikRepository.delete(korisnik);
-    }
+    public void delete(Korisnik korisnik) {
+       korisnikRepository.delete(korisnik);
+   }
 
     @Override
     public Korisnik insert(Korisnik korisnik) {
         return korisnikRepository.save(korisnik);
-
     }
 
     @Override
     public Korisnik edit(Korisnik korisnik) { return korisnikRepository.save(korisnik);
 
+    }
+
+    @Override
+    public void deleteById(Long iDKorisnik) {
+         korisnikRepository.deleteById(iDKorisnik);
     }
 
 

@@ -11,5 +11,7 @@ public interface KorisnikRepository extends JpaRepository<Korisnik, Long> {
 
     List<Korisnik> findByEmail(String email);
 
-    void delete(Optional<Korisnik> korisnik);
+    void delete(Korisnik korisnik);
+
+    void deleteById(Long iDKorisnik);
 }

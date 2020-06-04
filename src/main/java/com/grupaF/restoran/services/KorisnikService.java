@@ -12,10 +12,12 @@ public interface KorisnikService {
 
     List<Korisnik>findAll();
 
-    void delete(Optional<Korisnik> korisnik);
+    void delete(Korisnik korisnik);
 
     Korisnik insert(Korisnik korisnik);
 
     Korisnik edit(Korisnik korisnik);
+
+    void deleteById(Long iDKorisnik);
 }
 

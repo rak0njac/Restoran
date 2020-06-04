@@ -24,36 +24,9 @@ public class KorisnikController {
         Optional<Korisnik> k = this.korisnikService.findBykorisnikId(iDKorisnik);
         if (k.isPresent()) {
             model.addAttribute("korisnik", k.get());
-        }
-        return "profil";
-    }
-
-    @DeleteMapping(value = "/{iDKorisnik}")
-    public String deleteKorisnik(@PathVariable Long iDKorisnik, Model model){
-
-        Optional<Korisnik> k = this.korisnikService.findBykorisnikId(iDKorisnik);
-        if(k.isPresent())
-        {
-            this.korisnikService.delete(k);
             return "profil";
-
         }else{
-            return "error1";
-        }
-    }
-
-    @PutMapping(value = "/{iDKorisnik}")
-    public String editKorisnik(@PathVariable Long iDKorisnik, Model model){
-
-        Optional<Korisnik> k = this.korisnikService.findBykorisnikId(iDKorisnik);
-        if(k.isPresent())
-        {
-           Korisnik newKorisnik=k.get();
-           //newKorisnik.setAdresa();
-            return "profil";
-
-        }else{
-            return "error1";
+            return "Error";
         }
     }
 
