@@ -1,5 +1,6 @@
 package com.grupaF.restoran.services;
 
+import com.grupaF.restoran.models.Korisnik;
 import com.grupaF.restoran.models.Porudzbina;
 
 import java.util.Date;
@@ -11,7 +12,11 @@ public interface PorudzbinaService {
     List<Porudzbina> findByDatum(Date date);
     Optional<Porudzbina> findByIDPorudzbina(Long id);
 
-    public void insert(Porudzbina porudzbina);
-    public void delete(Porudzbina porudzbina);
+    Porudzbina insert(Porudzbina porudzbina);
+    void delete(Long iDPorudzbina);
 
+    Porudzbina edit(Porudzbina porudzbina);
+
+
+    List<Porudzbina> findAll();
 }

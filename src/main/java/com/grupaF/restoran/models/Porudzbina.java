@@ -35,7 +35,7 @@ public class Porudzbina {
         this.iDPorudzbina = iDPorudzbina;
     }
 
-    public boolean isOtkazano() {
+    public boolean getOtkazano() {
         return otkazano;
     }
 

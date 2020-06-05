@@ -25,12 +25,18 @@ public class PorudzbinaServiceImpl implements PorudzbinaService{
     }
 
     @Override
-    public void insert(Porudzbina porudzbina) {
-        porudzbinaRepository.save(porudzbina);
+    public List<Porudzbina> findAll(){return this.porudzbinaRepository.findAll();}
+
+    @Override
+    public Porudzbina insert(Porudzbina porudzbina) {
+        return porudzbinaRepository.save(porudzbina);
     }
 
     @Override
-    public void delete(Porudzbina porudzbina) {
-       porudzbinaRepository.delete(porudzbina);
+    public void delete(Long iDPorudzbina) { porudzbinaRepository.deleteById(iDPorudzbina);
     }
+
+    @Override
+    public Porudzbina edit(Porudzbina porudzbina){return porudzbinaRepository.save(porudzbina);}
+
 }
