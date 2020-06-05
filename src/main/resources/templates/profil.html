@@ -30,16 +30,18 @@
     <h1>Pretraga korisnika</h1>
     <div >
 
-        <form>
+        <form th:action="@{/getKorisnik}" method="post">
             <table id="pretraga" border="2">
                 <tr>
             <td>ID korisnika:</td>
             <td><input type="text" name="id"><br></td>
                 </tr>
                 <tr>
-                    <td colspan="2"> <a href="/getKorisnik" th:href="@/{iDKorisnik}" class="btn btn-large btn-success">Pretraga</a>
-                        <a href="/deleteKorisnik" th:href="@/{iDKorisnik}" class="btn btn-large btn-success">Obrisi</a>
-                        <a href="/editKorisnik" th:href="@/{iDKorisnik}" class="btn btn-large btn-success">Izmeni</a></td>
+
+                    <input type="submit" value="Pretraga" name="pretraga">
+<!--                    <td colspan="2"> <a href="/getKorisnik" th:href="@/{iDKorisnik}" class="btn btn-large btn-success">Pretraga</a>-->
+<!--                        <a href="/deleteKorisnik" th:href="@/{iDKorisnik}" class="btn btn-large btn-success">Obrisi</a>-->
+<!--                        <a href="/editKorisnik" th:href="@/{iDKorisnik}" class="btn btn-large btn-success">Izmeni</a></td>-->
                 </tr>
             </table>
         </form>
@@ -75,6 +77,34 @@
         </table>
     </div>
 </div>
+
+    <form th:action="@{/deleteKorisnik}" method="post">
+        <table id="delete" border="2">
+            <tr>
+                <td>ID korisnika:</td>
+                <td><input type="text" name="id"><br></td>
+            </tr>
+            <tr>
+
+                <input type="submit" value="Delete" name="delete">
+
+            </tr>
+        </table>
+    </form>
+
+    <form th:action="@{/editKorisnik}" method="post">
+        <table id="edit" border="2">
+            <tr>
+                <td>ID korisnika:</td>
+                <td><input type="text" name="id"><br></td>
+            </tr>
+            <tr>
+
+                <input type="submit" value="Izmeni" name="edit">
+
+            </tr>
+        </table>
+    </form>
 
 </div>
 

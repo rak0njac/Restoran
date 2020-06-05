@@ -3,6 +3,7 @@ package com.grupaF.restoran.controllers;
 import com.grupaF.restoran.models.Korisnik;
 import com.grupaF.restoran.services.KorisnikService;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
@@ -37,5 +38,7 @@ public class KorisnikController {
         model.addAttribute("korisnici",korisnici);
         return "profil";
     }
+
+
 
 }
