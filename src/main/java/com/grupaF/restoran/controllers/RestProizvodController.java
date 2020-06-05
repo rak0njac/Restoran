@@ -28,47 +28,37 @@ public class RestProizvodController {
         return new ResponseEntity<>(this.proizvodService.findByVrsta(vrsta), HttpStatus.OK);
     }
 
-//    @GetMapping(value = "/proizvodi1")
-//    public ResponseEntity<List<Korisnik>> getAll() {
-//        return new ResponseEntity<>(this.korisnikService.findAll(), HttpStatus.OK);
-//    }
-//
-//    @PostMapping(value="/proizvodi1")
-//    public ResponseEntity<Korisnik> save(@RequestBody Korisnik korisnik){
-//        return new ResponseEntity<>(this.korisnikService.insert(korisnik), HttpStatus.CREATED);
-//    }
-//
-//    @DeleteMapping(value = "/proizvodi1/{iDProizvod}")
-//    @ResponseStatus(HttpStatus.OK)
-//    public void delete(@PathVariable("iDProizvod") Long iDProizvod){
-//            this.korisnikService.deleteById(iDProizvod);
-//    }
+    @GetMapping(value = "/proizvodi1")
+    public ResponseEntity<List<Proizvod>> getAll() {
+     return new ResponseEntity<>(this.proizvodService.findAll(), HttpStatus.OK);
+   }
 
-//    @PutMapping(value = "/korisnici1/{iDKorisnik}")
-//    @ResponseStatus(HttpStatus.OK)
-//    public void update(@PathVariable( "iDKorisnik" ) Long iDKorisnik, @RequestBody Korisnik korisnik) {
-//        Preconditions.checkNotNull(korisnik);
-//        RestPreconditions.checkNotNull(this.korisnikService.findBykorisnikId(korisnik.getiDKorisnik() );
-//        service.update(resource);
-//    }
+ @PostMapping(value="/proizvodi1")
+    public ResponseEntity<Proizvod> save(@RequestBody Proizvod proizvod){
+        return new ResponseEntity<>(this.proizvodService.insert(proizvod), HttpStatus.CREATED);
+   }
 
-//    @PutMapping(value = "/proizvodi1/{iDProizvod}")
-//    ResponseEntity<Korisnik> update(@RequestBody Korisnik korisnik, @PathVariable Long iDProizvod){
-//        Optional<Korisnik> postojeciKorisnik = this.korisnikService.findBykorisnikId(iDProizvod);
-//
-//        if(postojeciKorisnik.isPresent()){
-//            Korisnik noviKorisnik = postojeciKorisnik.get();
-//            noviKorisnik.setAdresa(korisnik.getAdresa());
-//            noviKorisnik.setEmail(korisnik.getEmail());
-//            noviKorisnik.setPrezime(korisnik.getPrezime());
-//            noviKorisnik.setPassword(korisnik.getPassword());
-//            noviKorisnik.setTelefon(korisnik.getTelefon());
-//
-//            return new ResponseEntity<>(this.korisnikService.edit(noviKorisnik), HttpStatus.OK);
-//        }else{
-//            return new ResponseEntity<>(HttpStatus.NOT_FOUND);
-//        }
-//    }
+   @DeleteMapping(value = "/proizvodi1/{iDProizvod}")
+    @ResponseStatus(HttpStatus.OK)
+    public void delete(@PathVariable("iDProizvod") Long iDProizvod){
+            this.proizvodService.delete(iDProizvod);
+    }
+
+   @PutMapping(value = "/proizvodi1/{iDProizvod}")
+   ResponseEntity<Proizvod> update(@RequestBody Proizvod proizvod, @PathVariable Long iDProizvod){
+       Optional<Proizvod> postojeciProizvod = this.proizvodService.findById(iDProizvod);
+
+        if(postojeciProizvod.isPresent()){
+            Proizvod noviProizvod = postojeciProizvod.get();
+            noviProizvod.setCena(proizvod.getCena());
+            noviProizvod.setOpis(proizvod.getOpis());
+            noviProizvod.setSlika(proizvod.getSlika());
+
+            return new ResponseEntity<>(this.proizvodService.edit(noviProizvod), HttpStatus.OK);
+        }else{
+            return new ResponseEntity<>(HttpStatus.NOT_FOUND);
+        }
+    }
 
 
 }

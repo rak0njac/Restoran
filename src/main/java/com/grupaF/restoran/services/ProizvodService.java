@@ -12,9 +12,13 @@ public interface ProizvodService {
 
     List<Proizvod> findByVrsta(String vrsta);
 
-    void delete(Proizvod proizvod);
+    List<Proizvod> findAll();
 
-    void insert(Proizvod proizvod);
+    void delete(Long id);
 
-    void edit(Proizvod proizvod);
+    Proizvod insert(Proizvod proizvod);
+
+    Optional<Proizvod> findById(Long id);
+
+    Proizvod edit(Proizvod proizvod);
 }
