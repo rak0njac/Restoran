@@ -7,8 +7,10 @@ import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
+import org.springframework.validation.BindingResult;
 import org.springframework.web.bind.annotation.*;
 
+import javax.validation.Valid;
 import java.util.List;
 import java.util.Optional;
 
@@ -40,6 +42,27 @@ public class KorisnikController {
         return "profil";
     }
 
+    @PostMapping("/editKorisnik/{id}")
+    public String updateUser(@PathVariable("iDKorisnik") long iDKorisnik, @Valid Korisnik korisnik,
+                             BindingResult result, Model model) {
+        if (result.hasErrors()) {
+            korisnik.setiDKorisnik(iDKorisnik);
+            return "profilKorisnik";
+        }
 
+        korisnikService.insert(korisnik);
+        model.addAttribute("korisnici", korisnikService.findAll());
+        return "index";
+    }
+
+
+    @GetMapping("/delete/{iDKorisnik}")
+    public String delete(@PathVariable("iDKorisnik") long iDKorisnik, Model model) {
+        Korisnik korisnik = korisnikService.findBykorisnikId(iDKorisnik)
+                .orElseThrow(() -> new IllegalArgumentException("Ne postoji korisnik sa unetim id:" + iDKorisnik));
+        korisnikService.delete(korisnik);
+        model.addAttribute("korisnici", korisnikService.findAll());
+        return "index";
+    }
 
 }
