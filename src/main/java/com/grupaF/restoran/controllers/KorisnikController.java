@@ -20,7 +20,7 @@ public class KorisnikController {
     private KorisnikService korisnikService;
 
     @GetMapping(value = "/{iDKorisnik}")
-    public String getKorisnik(@PathVariable Long iDKorisnik, Model model) {
+    public String getKorisnik(@RequestParam Long iDKorisnik, Model model) {
 
         Optional<Korisnik> k = this.korisnikService.findBykorisnikId(iDKorisnik);
         if (k.isPresent()) {
@@ -33,7 +33,7 @@ public class KorisnikController {
 
     @GetMapping
     public String getAll(Model model) {
-
+        //Model salje podatke za renderovanje
         List<Korisnik>korisnici = this.korisnikService.findAll();
         model.addAttribute("korisnici",korisnici);
         return "profil";

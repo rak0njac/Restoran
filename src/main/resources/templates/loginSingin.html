@@ -26,14 +26,13 @@
 </head>
 <body>
 <div class="first">
-  <form th:action="@{/login}"
-        method="post">
+  <form th:action="@{/login}" method="post">
         <fieldset>
             <legend>Logovanje</legend>
             <label>Korisničko ime:</label><br>
-            <input type="text" name="korisnicko"><br>
+            <input type="text" name="username"><br>
             <label>Šifra:</label><br>
-            <input type="text" name="sifra"><br><br>
+            <input type="text" name="password"><br><br>
             <input type="submit" value="Ulogujte se"><br>
         </fieldset>
     </form>
