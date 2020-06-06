@@ -7,7 +7,10 @@ import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.*;
 
+import java.util.List;
 import java.util.Optional;
+
+import static org.springframework.web.bind.annotation.RequestMethod.POST;
 
 @Controller
 
@@ -53,11 +56,25 @@ public class LoginRegistarController {
    public String homePage(){
         return "loginSingin";
    }
-
+/*
     @PostMapping(value = "/registracija")
     String newKorisnik(@RequestBody Korisnik newKorisnik)
     {
         korisnikService.insert(newKorisnik);
         return "loginSingin";
+    }*/
+
+    @RequestMapping(value = "/registracija", method = POST)
+    public String insert(@ModelAttribute("korisnik") Korisnik korisnik){
+        korisnikService.insert(korisnik);
+        return "loginSingin";
     }
+    @PostMapping
+    public String getKorisnik(Model model) {
+        //Model salje podatke za renderovanje
+        List<Korisnik> k = this.korisnikService.findAll();
+        model.addAttribute("k", k);
+        return "profilKorisnik";
+    }
+
 }
