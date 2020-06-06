@@ -19,14 +19,15 @@ public class KorisnikController {
     @Autowired
     private KorisnikService korisnikService;
 
-    @GetMapping(value = "/{iDKorisnik}")
+    //@GetMapping(value = "/{iDKorisnik}")
+    @PostMapping(value = "/getKorisnik")
     public String getKorisnik(@RequestParam Long iDKorisnik, Model model) {
-
-        Optional<Korisnik> k = this.korisnikService.findBykorisnikId(iDKorisnik);
+          Optional<Korisnik> k = this.korisnikService.findBykorisnikId(iDKorisnik);
         if (k.isPresent()) {
             model.addAttribute("korisnik", k.get());
             return "profil";
-        }else{
+        }
+        else{
             return "Error";
         }
     }
