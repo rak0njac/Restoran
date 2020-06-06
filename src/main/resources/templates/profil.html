@@ -30,11 +30,11 @@
     <h1>Pretraga korisnika</h1>
     <div >
 
-        <form th:action="@{/getKorisnik}" method="post">
+        <form th:action="@{/koirsnici/getKorisnik}" method="post">
             <table id="pretraga" border="2">
                 <tr>
             <td>ID korisnika:</td>
-            <td><input type="text" name="id"><br></td>
+            <td><input type="text" name="iDKorisnik"><br></td>
                 </tr>
                 <tr>
 
@@ -78,11 +78,11 @@
     </div>
 </div>
 
-    <form th:action="@{/deleteKorisnik}" method="post">
+    <form th:action="@{/korisnici/delete}" method="post">
         <table id="delete" border="2">
             <tr>
                 <td>ID korisnika:</td>
-                <td><input type="text" name="id"><br></td>
+                <td><input type="text" name="iDKorisnik"><br></td>
             </tr>
             <tr>
 
