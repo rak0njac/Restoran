@@ -3,60 +3,131 @@
 <head>
     <meta charset="UTF-8">
     <title>Title</title>
-    <style>
-        .first{
-            margin:0px auto;
-            margin-top: 5%;
-            width: 30%;
+<!--    <style>-->
+<!--        .first{-->
+<!--            margin:0px auto;-->
+<!--            margin-top: 5%;-->
+<!--            width: 30%;-->
 
-        }
-        fieldset{
-            margin:0px auto;
-            margin-bottom: 10%;
-            border:2px solid darkgrey;
-            width: 35%;
-        }
-        legend{
-            color:black;
-        }
-        h2{
-            margin-left: 30%;
-        }
-    </style>
+<!--        }-->
+<!--        fieldset{-->
+<!--            margin:0px auto;-->
+<!--            margin-bottom: 10%;-->
+<!--            border:2px solid darkgrey;-->
+<!--            width: 35%;-->
+<!--        }-->
+<!--        legend{-->
+<!--            color:black;-->
+<!--        }-->
+<!--        h2{-->
+<!--            margin-left: 30%;-->
+<!--        }-->
+<!--    </style>-->
+<!--    <style>-->
+<!--        body {-->
+<!--            background-image: url('https://i.ibb.co/0y7NsQH/background.png');-->
+<!--            background-size: cover;-->
+<!--        }-->
+<!--    </style>-->
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css" integrity="sha384-Vkoo8x4CGsO3+Hhxv8T/Q5PaXtkKtu6ug5TOeNV6gBiFeWPGFN9MuhOf23Q9Ifjh" crossorigin="anonymous">
 </head>
 <body>
-<div class="first">
-  <form th:action="@{/login}" method="post">
-        <fieldset>
-            <legend>Logovanje</legend>
-            <label>Korisničko ime:</label><br>
-            <input type="text" name="username"><br>
-            <label>Šifra:</label><br>
-            <input type="text" name="password"><br><br>
-            <input type="submit" value="Ulogujte se"><br>
-        </fieldset>
-    </form>
-    <form th:action="@{/registracija}" method="post">
+<nav class="navbar navbar-dark bg-dark">
+    <span class="navbar-brand mb-0 h1">Restoran "F"</span>
+</nav>
+<div class="container">
+    <div class="row mt-5">
+        <div class="col">
+            <form th:action="@{/login}" class="form-horizontal" method="post">
+                <!--        <fieldset>-->
+                <!--            <legend>Logovanje</legend>-->
+                <!--            <label>Korisničko ime:</label><br>-->
+                <!--            <input type="text" name="username"><br>-->
+                <!--            <label>Šifra:</label><br>-->
+                <!--            <input type="text" name="password"><br><br>-->
+                <!--            <input type="submit" value="Ulogujte se"><br>-->
+                <!--        </fieldset>-->
+                <h1>Logovanje</h1>
+                <div class="form-group">
+                    <label for="logKorisnickoIme">Korisničko ime:</label>
+                    <input type="text" class="form-control" id="logKorisnickoIme" placeholder="Unesite korisničko ime">
+                </div>
+                <div class="form-group">
+                    <label for="logSifra">Password</label>
+                    <input type="password" class="form-control" id="logSifra" placeholder="Unesite šifru">
+                </div>
+                <button type="submit" class="btn btn-primary">Ulogujte se</button>
+            </form>
+        </div>
+        <div class="col"></div>
 
-        <fieldset>
-            <legend>Registrovanje</legend>
-            <label>Korisničko ime:</label><br>
-            <input type="text" name="username"><br>
-            <label>Šifra:</label><br>
-            <input type="password" name="password"><br>
-            <label>Ime:</label><br>
-            <input type="text" name="ime"><br>
-            <label>Prezime:</label><br>
-            <input type="text" name="prezime"><br>
-            <label>Telefon:</label><br>
-            <input type="text" name="telefon"><br>
-            <label>E-mail</label><br>
-            <input type="email" name="email"><br>
-            <label>Adresa:</label><br>
-            <input type="text" name="adresa"><br><br>
-            <input type="submit" value="Registruj se"><br>
-        </fieldset>
-    </form>
+        <div class="col">
+            <form th:action="@{/registracija}" class="form-horizontal" method="post">
+                <h1>Registracija</h1>
+                <div class="form-group">
+                    <label for="regKorisnickoIme">Korisničko ime:</label>
+                    <input type="text" class="form-control" id="regKorisnickoIme" placeholder="Unesite korisničko ime">
+                </div>
+                <div class="form-group">
+                    <label for="regSifra">Šifra:</label>
+                    <input type="password" class="form-control" id="regSifra" placeholder="Unesite šifru">
+<!--                    <small id="kHelp" class="form-text text-muted"></small>-->
+                </div>
+                <div class="form-group">
+                    <label for="regIme">Ime:</label>
+                    <input type="text" class="form-control" id="regIme" placeholder="Unesite vaše ime">
+                </div>
+                <div class="form-group">
+                    <label for="regPrezime">Prezime:</label>
+                    <input type="text" class="form-control" id="regPrezime" placeholder="Unesite vaše prezime">
+                </div>
+                <div class="form-group">
+                    <label for="regTelefon">Telefon:</label>
+                    <input type="tel" class="form-control" id="regTelefon" placeholder="Unesite broj mobilnog telefona">
+                </div>
+                <div class="form-group">
+                    <label for="regEmail">E-mail</label>
+                    <input type="email" class="form-control" id="regEmail" placeholder="Unesite e-mail adresu">
+                </div>
+                <div class="form-group">
+                    <label for="regAdresa">Adresa</label>
+                    <input type="text" class="form-control" id="regAdresa" placeholder="Unesite adresu za dostavu">
+                </div>
+                <button type="submit" class="btn btn-primary">Registrujte se</button>
+<!--                <fieldset>-->
+<!--                    <legend>Registrovanje</legend>-->
+<!--                    <label>Korisničko ime:</label><br>-->
+<!--                    <input type="text" name="username"><br>-->
+<!--                    <label>Šifra:</label><br>-->
+<!--                    <input type="password" name="password"><br>-->
+<!--                    <label>Ime:</label><br>-->
+<!--                    <input type="text" name="ime"><br>-->
+<!--                    <label>Prezime:</label><br>-->
+<!--                    <input type="text" name="prezime"><br>-->
+<!--                    <label>Telefon:</label><br>-->
+<!--                    <input type="text" name="telefon"><br>-->
+<!--                    <label>E-mail</label><br>-->
+<!--                    <input type="email" name="email"><br>-->
+<!--                    <label>Adresa:</label><br>-->
+<!--                    <input type="text" name="adresa"><br><br>-->
+<!--                    <input type="submit" value="Registruj se"><br>-->
+<!--                </fieldset>-->
+            </form>
+        </div>
+        <div class="col"></div>
+
+    </div>
+    <hr/>
+    <footer>
+        <p>2020 - ITS IT - grupa F</p>
+    </footer>
 </div>
+
+
+
+
+<script src="https://code.jquery.com/jquery-3.4.1.slim.min.js" integrity="sha384-J6qa4849blE2+poT4WnyKhv5vZF5SrPo0iEjwBvKU7imGFAV0wwj1yYfoRSJoZ+n" crossorigin="anonymous"></script>
+<script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.0/dist/umd/popper.min.js" integrity="sha384-Q6E9RHvbIyZFJoft+2mJbHaEWldlvI9IOYy5n3zV9zzTtmI3UksdQRVvoxMfooAo" crossorigin="anonymous"></script>
+<script src="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/js/bootstrap.min.js" integrity="sha384-wfSDF2E50Y2D1uUdj0O3uMBJnjuUD4Ih7YwaYd1iqfktj0Uod8GCExl3Og8ifwB6" crossorigin="anonymous"></script>
 </body>
 </html>
