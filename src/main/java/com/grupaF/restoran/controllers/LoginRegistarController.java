@@ -5,12 +5,15 @@ import com.grupaF.restoran.services.KorisnikService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
+import org.springframework.validation.BindingResult;
 import org.springframework.web.bind.annotation.*;
 
+import javax.validation.Valid;
 import java.util.List;
 import java.util.Optional;
 
 import static org.springframework.web.bind.annotation.RequestMethod.POST;
+
 
 @Controller
 
@@ -49,32 +52,24 @@ public class LoginRegistarController {
             model.addAttribute("korisnici", k.get());
             return "index";
         }
-        else return "Error";
+        else return "error1";
 
     }
    @GetMapping
    public String homePage(){
         return "loginSingin";
    }
-/*
-    @PostMapping(value = "/registracija")
-    String newKorisnik(@RequestBody Korisnik newKorisnik)
-    {
-        korisnikService.insert(newKorisnik);
-        return "loginSingin";
-    }*/
 
-    @RequestMapping(value = "/registracija", method = POST)
-    public String insert(@ModelAttribute("korisnik") Korisnik korisnik){
+    @PostMapping(value = "/dodaj")
+    public String dodaj(@Valid Korisnik korisnik, BindingResult result, Model model)
+    {
+        if(result.hasErrors()){
+            return "add-user";
+        }
         korisnikService.insert(korisnik);
-        return "loginSingin";
+        model.addAttribute("korisnik", korisnikService.findAll());
+        return "login";
     }
-    @PostMapping
-    public String getKorisnik(Model model) {
-        //Model salje podatke za renderovanje
-        List<Korisnik> k = this.korisnikService.findAll();
-        model.addAttribute("k", k);
-        return "profilKorisnik";
-    }
+
 
 }
