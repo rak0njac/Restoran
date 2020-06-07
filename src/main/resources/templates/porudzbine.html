@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.w3.org/1999/xhtml">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+
+<div th:switch="${porudzbine}">
+    <h2 th:case="null">Nema porudzbina!</h2>
+    <div th:case="*">
+        <h2>Porudzbine</h2>
+        <table>
+            <thead>
+            <tr>
+                <th>ID porudzbine</th>
+                <th>Otkazano</th>
+                <th>Datum</th>
+                <th>Vreme</th>
+
+            </tr>
+            </thead>
+            <tbody>
+            <tr th:each="porudzbina : ${porudzbine}">
+                <td th:text="${porudzbina.iDPorudzbine}"></td>
+                <td th:text="${porudzbina.otkazano}"></td>
+                <td th:text="${porudzbina.datum}"></td>
+                <td th:text="${porudzbina.vreme}"></td>
+
+            </tr>
+            </tbody>
+        </table>
+    </div>
+</div>
+
+</body>
+</html>
