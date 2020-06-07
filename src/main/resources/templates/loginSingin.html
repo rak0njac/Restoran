@@ -39,22 +39,14 @@
     <div class="row mt-5">
         <div class="col">
             <form th:action="@{/login}" class="form-horizontal" method="post">
-                <!--        <fieldset>-->
-                <!--            <legend>Logovanje</legend>-->
-                <!--            <label>Korisničko ime:</label><br>-->
-                <!--            <input type="text" name="username"><br>-->
-                <!--            <label>Šifra:</label><br>-->
-                <!--            <input type="text" name="password"><br><br>-->
-                <!--            <input type="submit" value="Ulogujte se"><br>-->
-                <!--        </fieldset>-->
                 <h1>Logovanje</h1>
                 <div class="form-group">
-                    <label for="logKorisnickoIme">Korisničko ime:</label>
-                    <input type="text" class="form-control" id="logKorisnickoIme" placeholder="Unesite korisničko ime">
-                </div>
-                <div class="form-group">
-                    <label for="logSifra">Password</label>
-                    <input type="password" class="form-control" id="logSifra" placeholder="Unesite šifru">
+                    <label>Korisničko ime:</label>
+                    <input type="text" class="form-control" name="username" id="usernanme" placeholder="Unesite korisničko ime">
+
+                    <label for="password">Password</label>
+                    <input type="password" class="form-control" name="password" id="password"
+                           placeholder="Unesite šifru">
                 </div>
                 <button type="submit" class="btn btn-primary">Ulogujte se</button>
             </form>
@@ -62,11 +54,11 @@
         <div class="col"></div>
 
         <div class="col">
-            <form th:action="@{/registracija}" class="form-horizontal" method="post">
+            <form th:action="@{/dodaj}" th:object="${korisnik}" class="form-horizontal" method="post">
                 <h1>Registracija</h1>
                 <div class="form-group">
-                    <label for="regKorisnickoIme">Korisničko ime:</label>
-                    <input type="text" class="form-control" id="regKorisnickoIme" placeholder="Unesite korisničko ime">
+                    <label for="korisnicko">Korisničko ime:</label>
+                    <input type="text" class="form-control" id="korisnicko" placeholder="Unesite korisničko ime">
                 </div>
                 <div class="form-group">
                     <label for="regSifra">Šifra:</label>
@@ -74,44 +66,29 @@
 <!--                    <small id="kHelp" class="form-text text-muted"></small>-->
                 </div>
                 <div class="form-group">
-                    <label for="regIme">Ime:</label>
-                    <input type="text" class="form-control" id="regIme" placeholder="Unesite vaše ime">
+                    <label for="ime">Ime:</label>
+                    <input type="text" class="form-control" id="ime" placeholder="Unesite vaše ime">
                 </div>
                 <div class="form-group">
-                    <label for="regPrezime">Prezime:</label>
-                    <input type="text" class="form-control" id="regPrezime" placeholder="Unesite vaše prezime">
+                    <label for="prezime">Prezime:</label>
+                    <input type="text" class="form-control" id="prezime" placeholder="Unesite vaše prezime">
                 </div>
                 <div class="form-group">
-                    <label for="regTelefon">Telefon:</label>
-                    <input type="tel" class="form-control" id="regTelefon" placeholder="Unesite broj mobilnog telefona">
+                    <label for="telefon">Telefon:</label>
+                    <input type="tel" class="form-control" id="telefon" placeholder="Unesite broj mobilnog telefona">
                 </div>
                 <div class="form-group">
-                    <label for="regEmail">E-mail</label>
-                    <input type="email" class="form-control" id="regEmail" placeholder="Unesite e-mail adresu">
+                    <label for="email">E-mail</label>
+                    <input type="email" class="form-control" id="email" placeholder="Unesite e-mail adresu">
                 </div>
                 <div class="form-group">
-                    <label for="regAdresa">Adresa</label>
-                    <input type="text" class="form-control" id="regAdresa" placeholder="Unesite adresu za dostavu">
+                    <label for="adresa">Adresa</label>
+                    <input type="text" class="form-control" id="adresa" placeholder="Unesite adresu za dostavu">
+                </div>
+                <div class="form-group">
+                   <input type="text" class="form-control" placeholder="Unesite adresu za dostavu">
                 </div>
                 <button type="submit" class="btn btn-primary">Registrujte se</button>
-<!--                <fieldset>-->
-<!--                    <legend>Registrovanje</legend>-->
-<!--                    <label>Korisničko ime:</label><br>-->
-<!--                    <input type="text" name="username"><br>-->
-<!--                    <label>Šifra:</label><br>-->
-<!--                    <input type="password" name="password"><br>-->
-<!--                    <label>Ime:</label><br>-->
-<!--                    <input type="text" name="ime"><br>-->
-<!--                    <label>Prezime:</label><br>-->
-<!--                    <input type="text" name="prezime"><br>-->
-<!--                    <label>Telefon:</label><br>-->
-<!--                    <input type="text" name="telefon"><br>-->
-<!--                    <label>E-mail</label><br>-->
-<!--                    <input type="email" name="email"><br>-->
-<!--                    <label>Adresa:</label><br>-->
-<!--                    <input type="text" name="adresa"><br><br>-->
-<!--                    <input type="submit" value="Registruj se"><br>-->
-<!--                </fieldset>-->
             </form>
         </div>
         <div class="col"></div>
