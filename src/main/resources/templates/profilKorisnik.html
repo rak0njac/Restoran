@@ -1,10 +1,43 @@
 <!DOCTYPE html>
-<html lang="en">
+<html xmlns:th="http://www.w3.org/1999/xhtml">
+
 <head>
     <meta charset="UTF-8">
-    <title>Title</title>
+    <title>Korisnici</title>
 </head>
 <body>
+
+<div class="first">
+
+
+    <h2>Korisnici</h2>
+    <table>
+        <thead>
+        <tr>
+            <th>ID korisnika</th>
+            <th>Ime</th>
+            <th>Prezime</th>
+            <th>Username</th>
+            <th>Telefon</th>
+            <th>Email</th>
+            <th>Adresa</th>
+        </tr>
+        </thead>
+        <tbody>
+        <tr>
+            <td th:text="${korisnik.iDKorisnik}"></td>
+            <td th:text="${korisnik.ime}"></td>
+            <td th:text="${korisnik.prezime}"></td>
+            <td th:text="${korisnik.username}"></td>
+            <td th:text="${korisnik.telefon}"></td>
+            <td th:text="${korisnik.email}"></td>
+            <td th:text="${korisnik.adresa}"></td>
+        </tr>
+        </tbody>
+    </table>
+</div>
+
+
 
 </body>
 </html>
