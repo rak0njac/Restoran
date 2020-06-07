@@ -22,12 +22,12 @@ public class KorisnikController {
     private KorisnikService korisnikService;
 
     //@GetMapping(value = "/{iDKorisnik}")
-    @PostMapping(value = "/getKorisnik")
-    public String getKorisnik(@RequestParam Long iDKorisnik, Model model) {
-          Optional<Korisnik> k = this.korisnikService.findBykorisnikId(iDKorisnik);
+    @GetMapping(value = "/getKorisnik/{id}")
+    public String getKorisnik(@PathVariable Long id, Model model) {
+          Optional<Korisnik> k = this.korisnikService.findBykorisnikId(id);
         if (k.isPresent()) {
             model.addAttribute("korisnik", k.get());
-            return "profil";
+            return "profilKorisnik";
         }
         else{
             return "Error";
