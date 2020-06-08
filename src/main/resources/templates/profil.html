@@ -57,6 +57,13 @@
                             <td th:text="${korisnik.telefon}"></td>
                             <td th:text="${korisnik.email}"></td>
                             <td th:text="${korisnik.adresa}"></td>
+                          <td> <a href="#" th:href="@{korisnici/delete/} + ${korisnik.iDKorisnik}">Obriši</a></td>
+
+
+                            <!-- <td><a th:href="@{/korisnik/delete/} + ${korisnik.iDKorisnik}" class="btn btn-primary">Obriši</a></td>-->
+                           <!--<td><a th:href="|@{/korisnik/delete/{iDkorisnik}(iDKorisnik=${korisnik.iDKorisnik})}">Obriši</a></td>-->
+                           <!-- <td><a href="/updateUser?iDKorisnik=${korisnik.iDKorisnik}">Izmeni</a></td>-->
+                           <!-- <td><a href="/delete?iDKorisnik=${korisnik.iDKorisnik}">Obriši</a></td>-->
                         </tr>
                         </tbody>
                     </table>
@@ -90,7 +97,7 @@
                 </table>
             </form>
 
-            <form th:action="@{/korisnici/editKorisnik}" method="post">
+          <!--  <form th:action="@{/korisnici/editKorisnik}" method="post">
                 <table id="edit" border="2">
                     <tr>
                         <td>ID korisnika:</td>
@@ -102,7 +109,7 @@
 
                     </tr>
                 </table>
-            </form>
+            </form>-->
 
 
 

@@ -1,5 +1,6 @@
 package com.grupaF.restoran.controllers;
 
+import com.grupaF.restoran.models.Korisnik;
 import com.grupaF.restoran.models.Porudzbina;
 import com.grupaF.restoran.models.Proizvod;
 import com.grupaF.restoran.services.PorudzbinaService;
@@ -8,9 +9,12 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RequestParam;
 
 import java.util.List;
+import java.util.Optional;
 
 @Controller
 @RequestMapping("/proizvodi")
@@ -25,4 +29,5 @@ public class ProizvodController {
         model.addAttribute("proizvodi",proizvodi);
         return "proizvodi";
     }
+
 }

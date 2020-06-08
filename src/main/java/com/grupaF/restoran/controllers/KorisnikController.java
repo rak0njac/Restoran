@@ -56,13 +56,17 @@ public class KorisnikController {
     }
 
 
-    @GetMapping("/delete/{iDKorisnik}")
+   @RequestMapping(value="/delete/{iDKorisnik}")
     public String delete(@PathVariable("iDKorisnik") long iDKorisnik, Model model) {
         Korisnik korisnik = korisnikService.findBykorisnikId(iDKorisnik)
                 .orElseThrow(() -> new IllegalArgumentException("Ne postoji korisnik sa unetim id:" + iDKorisnik));
-        korisnikService.delete(korisnik);
+        korisnikService.deleteById(korisnik.getiDKorisnik());
         model.addAttribute("korisnici", korisnikService.findAll());
-        return "index";
+        return "profil";
     }
+
+
+
+
 
 }
