@@ -21,7 +21,7 @@ public class KorisnikController {
     @Autowired
     private KorisnikService korisnikService;
 
-    //@GetMapping(value = "/{iDKorisnik}")
+
     @GetMapping(value = "/getKorisnik/{id}")
     public String getKorisnik(@PathVariable Long id, Model model) {
           Optional<Korisnik> k = this.korisnikService.findBykorisnikId(id);
