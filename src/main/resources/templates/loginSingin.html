@@ -49,7 +49,7 @@
                 <h1>Logovanje</h1>
                 <div class="form-group">
                     <label>Korisničko ime:</label>
-                    <input type="text" class="form-control" name="username" id="usernanme" placeholder="Unesite korisničko ime">
+                    <input type="text" class="form-control" name="username" id="username" placeholder="Unesite korisničko ime">
 
                     <label for="password">Password</label>
                     <input type="password" class="form-control" name="password" id="password"
@@ -64,38 +64,56 @@
             <form th:action="@{/dodaj}" th:object="${korisnik}" class="form-horizontal" method="post">
                 <h1>Registracija</h1>
                 <div class="form-group">
-                    <label for="korisnicko">Korisničko ime:</label>
-                    <input type="text" class="form-control" id="korisnicko" placeholder="Unesite korisničko ime">
+                    <label th:text="#{label.korisnik.username}">Korisničko ime:</label>
+                    <input th:field="*{username}" type="text" class="form-control" id="korisnicko" placeholder="Unesite korisničko ime">
+                    <p th:each="error: ${#fields.errors('username')}"
+                       th:text="${error}">Validation error</p>
                 </div>
                 <div class="form-group">
-                    <label for="regSifra">Šifra:</label>
-                    <input type="password" class="form-control" id="regSifra" placeholder="Unesite šifru">
+                    <label th:text="#{label.korisnik.password}">Šifra:</label>
+                    <input  th:field="*{password}"  type="password" class="form-control" id="regSifra" placeholder="Unesite šifru">
+                    <p th:each="error : ${#fields.errors('password')}"
+                       th:text="${error}">Validation error</p>
 <!--                    <small id="kHelp" class="form-text text-muted"></small>-->
                 </div>
-                <div class="form-group">
-                    <label for="ime">Ime:</label>
-                    <input type="text" class="form-control" id="ime" placeholder="Unesite vaše ime">
+                <div>
+                    <label th:text="#{label.korisnik.confirmPass}">confirm</label>
+                    <input type="password" th:field="*{matchingPassword}"/>
                 </div>
                 <div class="form-group">
-                    <label for="prezime">Prezime:</label>
-                    <input type="text" class="form-control" id="prezime" placeholder="Unesite vaše prezime">
+                    <label th:text="#{label.korisnik.ime}">Ime:</label>
+                    <input th:field="*{ime}"  type="text" class="form-control" id="ime" placeholder="Unesite vaše ime">
+                    <p th:each="error: ${#fields.errors('ime')}"
+                       th:text="${error}">Validation error</p>
                 </div>
                 <div class="form-group">
-                    <label for="telefon">Telefon:</label>
-                    <input type="tel" class="form-control" id="telefon" placeholder="Unesite broj mobilnog telefona">
+                    <label th:text="#{label.korisnik.prezime}">Prezime:</label>
+                    <input th:field="*{prezime}" type="text" class="form-control" id="prezime" placeholder="Unesite vaše prezime">
+                    <p th:each="error : ${#fields.errors('prezime')}"
+                       th:text="${error}">Validation error</p>
                 </div>
                 <div class="form-group">
-                    <label for="email">E-mail</label>
-                    <input type="email" class="form-control" id="email" placeholder="Unesite e-mail adresu">
+                    <label  th:text="#{label.korisnik.telefon}">Telefon:</label>
+                    <input th:field="*{telefon}" type="tel" class="form-control" id="telefon" placeholder="Unesite broj mobilnog telefona">
+                    <p th:each="error : ${#fields.errors('telefon')}"
+                       th:text="${error}">Validation error</p>
                 </div>
                 <div class="form-group">
-                    <label for="adresa">Adresa</label>
-                    <input type="text" class="form-control" id="adresa" placeholder="Unesite adresu za dostavu">
+                    <label th:text="#{label.korisnik.email}">E-mail</label>
+                    <input type="email" th:field="*{email}" class="form-control" id="email" placeholder="Unesite e-mail adresu">
+                    <p th:each="error : ${#fields.errors('email')}"
+                       th:text="${error}">Validation error</p>
+                </div>
+                <div class="form-group">
+                    <label  th:text="#{label.korisnik.adresa}">Adresa</label>
+                    <input th:field="*{adresa}" type="text" class="form-control" id="adresa" placeholder="Unesite adresu za dostavu">
+                    <p th:each="error : ${#fields.errors('adresa')}"
+                       th:text="${error}">Validation error</p>
                 </div>
                 <div class="form-group">
                    <input type="text" class="form-control" placeholder="Unesite adresu za dostavu">
                 </div>
-                <button type="submit" class="btn btn-primary">Registrujte se</button>
+                <button th:text="#{label.form.submit}" type="submit" class="btn btn-primary">Registrujte se</button>
             </form>
         </div>
         <div class="col"></div>
