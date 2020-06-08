@@ -4,111 +4,148 @@
 <head>
     <meta charset="UTF-8">
     <title>Korisnici</title>
-    <style>
-        .first{
-            margin: 0px auto;
-            margin-top: 5%;
-            width:60%;
-        }
-        h1, h2{
-            text-align: center;
-        }
-        table{
-            margin-top: 1%;
-            margin-left: 15%;
+<!--    <style>-->
+<!--        .first{-->
+<!--            margin: 0px auto;-->
+<!--            margin-top: 5%;-->
+<!--            width:60%;-->
+<!--        }-->
+<!--        h1, h2{-->
+<!--            text-align: center;-->
+<!--        }-->
+<!--        table{-->
+<!--            margin-top: 1%;-->
+<!--            margin-left: 15%;-->
 
-        }
-        #pretraga{
-            margin: 0px auto;
-        }
+<!--        }-->
+<!--        #pretraga{-->
+<!--            margin: 0px auto;-->
+<!--        }-->
 
-    </style>
+<!--    </style>-->
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css" integrity="sha384-Vkoo8x4CGsO3+Hhxv8T/Q5PaXtkKtu6ug5TOeNV6gBiFeWPGFN9MuhOf23Q9Ifjh" crossorigin="anonymous">
+
 </head>
-<body>
+<nav class="navbar navbar-dark bg-dark">
+    <a class="navbar-brand" href="index.html">Restoran F</a>
+</nav>
+<h1 align="center">Pretraga korisnika</h1>
+<p></p>
 
-<div class="first">
-    <h1>Pretraga korisnika</h1>
-    <div >
+            <div th:switch="${korisnici}">
+                <h2 th:case="null">Nema korisnika!</h2>
+                <div th:case="*">
+                    <h2>Korisnici</h2>
+                    <table class="table">
+                        <thead>
+                        <tr>
+                            <th>ID korisnika</th>
+                            <th>Ime</th>
+                            <th>Prezime</th>
+                            <th>Username</th>
+                            <th>Telefon</th>
+                            <th>Email</th>
+                            <th>Adresa</th>
+                        </tr>
+                        </thead>
+                        <tbody>
+                        <tr th:each="korisnik : ${korisnici}">
+                            <td th:text="${korisnik.iDKorisnik}"></td>
+                            <td th:text="${korisnik.ime}"></td>
+                            <td th:text="${korisnik.prezime}"></td>
+                            <td th:text="${korisnik.username}"></td>
+                            <td th:text="${korisnik.telefon}"></td>
+                            <td th:text="${korisnik.email}"></td>
+                            <td th:text="${korisnik.adresa}"></td>
+                        </tr>
+                        </tbody>
+                    </table>
 
-        <form th:action="@{/koirsnici/getKorisnik}" method="post">
-            <table id="pretraga" border="2">
-                <tr>
-                    <td>ID korisnika:</td>
-                    <td><input type="text" name="iDKorisnik"><br></td>
-                </tr>
-                <tr>
+                </div>
+            </div>
 
-                    <input type="submit" value="Pretraga" name="pretraga">
-                    <!--                    <td colspan="2"> <a href="/getKorisnik" th:href="@/{iDKorisnik}" class="btn btn-large btn-success">Pretraga</a>-->
-                    <!--                        <a href="/deleteKorisnik" th:href="@/{iDKorisnik}" class="btn btn-large btn-success">Obrisi</a>-->
-                    <!--                        <a href="/editKorisnik" th:href="@/{iDKorisnik}" class="btn btn-large btn-success">Izmeni</a></td>-->
-                </tr>
-            </table>
-        </form>
+            <form th:action="@{/korisnici/getKorisnik}" method="post">
+                <table id="pretraga" border="2">
+                    <tr>
+                        <td>ID korisnika:</td>
+                        <td><input type="text" name="iDKorisnik"><br></td>
+                    </tr>
+                    <tr>
+                        <input type="submit" value="Pretraga" name="pretraga">
+                    </tr>
+                </table>
+            </form>
 
-    </div>
-    <div th:switch="${korisnici}">
-        <h2 th:case="null">Nema korisnika!</h2>
-        <div th:case="*">
-            <h2>Korisnici</h2>
-            <table>
-                <thead>
-                <tr>
-                    <th>ID korisnika</th>
-                    <th>Ime</th>
-                    <th>Prezime</th>
-                    <th>Username</th>
-                    <th>Telefon</th>
-                    <th>Email</th>
-                    <th>Adresa</th>
-                </tr>
-                </thead>
-                <tbody>
-                <tr th:each="korisnik : ${korisnici}">
-                    <td th:text="${korisnik.iDKorisnik}"></td>
-                    <td th:text="${korisnik.ime}"></td>
-                    <td th:text="${korisnik.prezime}"></td>
-                    <td th:text="${korisnik.username}"></td>
-                    <td th:text="${korisnik.telefon}"></td>
-                    <td th:text="${korisnik.email}"></td>
-                    <td th:text="${korisnik.adresa}"></td>
-                </tr>
-                </tbody>
-            </table>
-        </div>
-    </div>
+            <form th:action="@{/korisnici/delete}" method="post">
+                <table id="delete" border="2">
+                    <tr>
+                        <td>ID korisnika:</td>
+                        <td><input type="text" name="iDKorisnik"><br></td>
+                    </tr>
+                    <tr>
 
-    <form th:action="@{/korisnici/delete}" method="post">
-        <table id="delete" border="2">
-            <tr>
-                <td>ID korisnika:</td>
-                <td><input type="text" name="iDKorisnik"><br></td>
-            </tr>
-            <tr>
+                        <input type="submit" value="Delete" name="delete">
 
-                <input type="submit" value="Delete" name="delete">
+                    </tr>
+                </table>
+            </form>
 
-            </tr>
-        </table>
-    </form>
+            <form th:action="@{/korisnici/editKorisnik}" method="post">
+                <table id="edit" border="2">
+                    <tr>
+                        <td>ID korisnika:</td>
+                        <td><input type="text" name="id"><br></td>
+                    </tr>
+                    <tr>
 
-    <form th:action="@{/korisnici/editKorisnik}" method="post">
-        <table id="edit" border="2">
-            <tr>
-                <td>ID korisnika:</td>
-                <td><input type="text" name="id"><br></td>
-            </tr>
-            <tr>
+                        <input type="submit" value="Izmeni" name="edit">
 
-                <input type="submit" value="Izmeni" name="edit">
-
-            </tr>
-        </table>
-    </form>
-
-</div>
+                    </tr>
+                </table>
+            </form>
 
 
 
-</body>
+
+        <!--    <div th:switch="${korisnici}">-->
+        <!--        <h2 th:case="null">Nema korisnika!</h2>-->
+        <!--        <div th:case="*">-->
+        <!--            <h2>Korisnici</h2>-->
+        <!--            <table>-->
+        <!--                <thead>-->
+        <!--                <tr>-->
+        <!--                    <th>ID korisnika</th>-->
+        <!--                    <th>Ime</th>-->
+        <!--                    <th>Prezime</th>-->
+        <!--                    <th>Username</th>-->
+        <!--                    <th>Telefon</th>-->
+        <!--                    <th>Email</th>-->
+        <!--                    <th>Adresa</th>-->
+        <!--                </tr>-->
+        <!--                </thead>-->
+        <!--                <tbody>-->
+        <!--                <tr th:each="korisnik : ${korisnici}">-->
+        <!--                    <td th:text="${korisnik.iDKorisnik}"></td>-->
+        <!--                    <td th:text="${korisnik.ime}"></td>-->
+        <!--                    <td th:text="${korisnik.prezime}"></td>-->
+        <!--                    <td th:text="${korisnik.username}"></td>-->
+        <!--                    <td th:text="${korisnik.telefon}"></td>-->
+        <!--                    <td th:text="${korisnik.email}"></td>-->
+        <!--                    <td th:text="${korisnik.adresa}"></td>-->
+        <!--                </tr>-->
+        <!--                </tbody>-->
+        <!--            </table>-->
+        <!--        </div>-->
+        <!--    </div>-->
+
+
+
+
+
+
+        <script src="https://code.jquery.com/jquery-3.4.1.slim.min.js" integrity="sha384-J6qa4849blE2+poT4WnyKhv5vZF5SrPo0iEjwBvKU7imGFAV0wwj1yYfoRSJoZ+n" crossorigin="anonymous"></script>
+        <script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.0/dist/umd/popper.min.js" integrity="sha384-Q6E9RHvbIyZFJoft+2mJbHaEWldlvI9IOYy5n3zV9zzTtmI3UksdQRVvoxMfooAo" crossorigin="anonymous"></script>
+        <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/js/bootstrap.min.js" integrity="sha384-wfSDF2E50Y2D1uUdj0O3uMBJnjuUD4Ih7YwaYd1iqfktj0Uod8GCExl3Og8ifwB6" crossorigin="anonymous"></script>
+
+
 </html>
