@@ -75,6 +75,8 @@ public class LoginRegistarController {
         k.setEmail(email);
         k.setAdresa(adresa);
 
+        //komentar
+
         korisnikService.insert(k);
 
         return "loginSingin";
