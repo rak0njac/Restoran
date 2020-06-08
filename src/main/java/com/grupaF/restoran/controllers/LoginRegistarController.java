@@ -61,15 +61,23 @@ public class LoginRegistarController {
    }
 
     @PostMapping(value = "/dodaj")
-    public String dodaj(@Valid Korisnik korisnik, BindingResult result, Model model)
+    public String dodaj(@RequestParam String username, @RequestParam String password, @RequestParam String ime, @RequestParam String prezime,
+                        @RequestParam String telefon, @RequestParam String tip, @RequestParam String email,
+                        @RequestParam String adresa, Model model)
     {
-        if(result.hasErrors()){
-            return "add-user";
-        }
-        korisnikService.insert(korisnik);
-        model.addAttribute("korisnik", korisnikService.findAll());
-        return "login";
-    }
+        Korisnik k = new Korisnik();
+        k.setUsername(username);
+        k.setPassword(password);
+        k.setTelefon(telefon);
+        k.setTip(tip);
+        k.setIme(ime);
+        k.setPrezime(prezime);
+        k.setEmail(email);
+        k.setAdresa(adresa);
 
+        korisnikService.insert(k);
+
+        return "loginSingin";
+    }
 
 }
