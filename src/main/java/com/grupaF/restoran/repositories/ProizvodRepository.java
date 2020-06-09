@@ -11,4 +11,6 @@ public interface ProizvodRepository extends JpaRepository<Proizvod, Long> {
 
     List<Proizvod> findByVrsta(String vrsta);
 
+    void deleteById(Long iDProizvod);
+    //
 }

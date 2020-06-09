@@ -8,11 +8,10 @@ import com.grupaF.restoran.services.ProizvodService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.PostMapping;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RequestParam;
+import org.springframework.validation.BindingResult;
+import org.springframework.web.bind.annotation.*;
 
+import javax.validation.Valid;
 import java.util.List;
 import java.util.Optional;
 
@@ -30,4 +29,29 @@ public class ProizvodController {
         return "proizvodi";
     }
 
+    @RequestMapping(value="/delete/{iDProizvod}")
+    public String delete(@PathVariable("iDProizvod") long iDProizvod, Model model) {
+       // Optional<Proizvod> proizvod = proizvodService.findById(iDProizvod);
+
+        Proizvod proizvod = proizvodService.findById(iDProizvod)
+                .orElseThrow(() -> new IllegalArgumentException("Ne postoji proizvod sa unetim id:" + iDProizvod));
+
+        proizvodService.delete(proizvod.getiDProizvod());
+
+        model.addAttribute("proizvodi", proizvodService.findAll());
+        return "proizvodi";
+    }
+
+    @PostMapping("/editPoizvod/{idPoizvod}")
+    public String updateUser(@PathVariable("idProizvod") long idProizvod, @Valid Proizvod proizvod,
+                             BindingResult result, Model model) {
+        if (result.hasErrors()) {
+            proizvod.setiDProizvod(idProizvod);
+            return "proizvodi";
+        }
+
+        proizvodService.insert(proizvod);
+        model.addAttribute("proizvodi", proizvodService.findAll());
+        return "index";
+    }
 }
