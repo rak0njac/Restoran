@@ -16,6 +16,8 @@ public interface ProizvodService {
 
     void delete(Long id);
 
+    void deleteById(Long iDProizvod);
+
     Proizvod insert(Proizvod proizvod);
 
     Optional<Proizvod> findById(Long id);

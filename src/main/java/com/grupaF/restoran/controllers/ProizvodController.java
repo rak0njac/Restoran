@@ -36,7 +36,7 @@ public class ProizvodController {
         Proizvod proizvod = proizvodService.findById(iDProizvod)
                 .orElseThrow(() -> new IllegalArgumentException("Ne postoji proizvod sa unetim id:" + iDProizvod));
 
-        proizvodService.delete(proizvod.getiDProizvod());
+        proizvodService.deleteById(proizvod.getiDProizvod());
 
         model.addAttribute("proizvodi", proizvodService.findAll());
         return "proizvodi";

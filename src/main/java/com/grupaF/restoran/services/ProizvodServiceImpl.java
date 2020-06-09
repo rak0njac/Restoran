@@ -31,6 +31,11 @@ public class ProizvodServiceImpl implements ProizvodService{
     }
 
     @Override
+    public void deleteById(Long iDProizvod) {
+        proizvodRepository.deleteById(iDProizvod);
+    }
+
+    @Override
     public List<Proizvod> findByVrsta(String vrsta) {
         return this.proizvodRepository.findByVrsta(vrsta);
     }
