@@ -22,7 +22,7 @@ public class Porudzbina {
     private Time vreme;
 
     @ManyToOne
-    private Korisnik korisnik;
+    private com.grupaF.restoran.models.korisnik korisnik;
 
     @OneToMany(mappedBy = "porudzbina")
     Set<Porudzbina_proizvod> porudzbina_proizvods;

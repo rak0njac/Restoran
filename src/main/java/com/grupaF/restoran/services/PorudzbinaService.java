@@ -1,6 +1,5 @@
 package com.grupaF.restoran.services;
 
-import com.grupaF.restoran.models.Korisnik;
 import com.grupaF.restoran.models.Porudzbina;
 
 import java.util.Date;

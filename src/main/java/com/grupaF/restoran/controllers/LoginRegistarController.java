@@ -1,18 +1,13 @@
 package com.grupaF.restoran.controllers;
 
-import com.grupaF.restoran.models.Korisnik;
+import com.grupaF.restoran.models.korisnik;
 import com.grupaF.restoran.services.KorisnikService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
-import org.springframework.validation.BindingResult;
 import org.springframework.web.bind.annotation.*;
 
-import javax.validation.Valid;
-import java.util.List;
 import java.util.Optional;
-
-import static org.springframework.web.bind.annotation.RequestMethod.POST;
 
 
 @Controller
@@ -47,7 +42,7 @@ public class LoginRegistarController {
     //@GetMapping(value="/login/{username}/{password}")
     @PostMapping(value = "/login")
     public String login(@RequestParam String username, @RequestParam String password, Model model){
-        Optional<Korisnik> k = this.korisnikService.findByUsernameAndPassword(username, password);
+        Optional<korisnik> k = this.korisnikService.findByUsernameAndPassword(username, password);
         if(k.isPresent()){
             model.addAttribute("korisnici", k.get());
             return "index";
@@ -65,7 +60,7 @@ public class LoginRegistarController {
                         @RequestParam String telefon, @RequestParam String tip, @RequestParam String email,
                         @RequestParam String adresa, Model model)
     {
-        Korisnik k = new Korisnik();
+        korisnik k = new korisnik();
         k.setUsername(username);
         k.setPassword(password);
         k.setTelefon(telefon);
@@ -77,7 +72,7 @@ public class LoginRegistarController {
 
         //komentar
 
-        korisnikService.insert(k);
+        korisnikService.save(k);
 
         return "loginSingin";
     }

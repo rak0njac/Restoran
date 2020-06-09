@@ -1,9 +1,6 @@
 package com.grupaF.restoran.controllers;
 
-import com.grupaF.restoran.models.Korisnik;
-import com.grupaF.restoran.models.Porudzbina;
 import com.grupaF.restoran.models.Proizvod;
-import com.grupaF.restoran.services.PorudzbinaService;
 import com.grupaF.restoran.services.ProizvodService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
@@ -13,7 +10,6 @@ import org.springframework.web.bind.annotation.*;
 
 import javax.validation.Valid;
 import java.util.List;
-import java.util.Optional;
 
 @Controller
 @RequestMapping("/proizvodi")
@@ -42,7 +38,19 @@ public class ProizvodController {
         return "proizvodi";
     }
 
-    @PostMapping("/editPoizvod/{idPoizvod}")
+//    @GetMapping(value = "/editProizvod/{id}")
+//    public String editProizvod(@PathVariable("id") Long id, Model model) {
+//        Optional<Proizvod> p = this.proizvodService.findById(id);
+//        if (p.isPresent()) {
+//            model.addAttribute("proizvod", p.get());
+//            return "updateProizvod";
+//        }
+//        else{
+//            return "Error";
+//        }
+//    }
+
+    @PostMapping("/editProizvod/{idProizvod}")
     public String updateUser(@PathVariable("idProizvod") long idProizvod, @Valid Proizvod proizvod,
                              BindingResult result, Model model) {
         if (result.hasErrors()) {

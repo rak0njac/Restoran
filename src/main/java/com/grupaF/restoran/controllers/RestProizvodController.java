@@ -1,8 +1,6 @@
 package com.grupaF.restoran.controllers;
 
-import com.grupaF.restoran.models.Korisnik;
 import com.grupaF.restoran.models.Proizvod;
-import com.grupaF.restoran.services.KorisnikService;
 import com.grupaF.restoran.services.ProizvodService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;

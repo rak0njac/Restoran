@@ -1,22 +1,22 @@
 package com.grupaF.restoran.services;
 
-import com.grupaF.restoran.models.Korisnik;
+import com.grupaF.restoran.models.korisnik;
 
 import java.util.List;
 import java.util.Optional;
 
 public interface KorisnikService {
-    Optional<Korisnik> findBykorisnikId(Long iDKorisnik);
+    Optional<korisnik> findById(Long iDKorisnik);
 
-    Optional<Korisnik>findByUsernameAndPassword(String username, String password);
+    Optional<korisnik>findByUsernameAndPassword(String username, String password);
 
-    List<Korisnik>findAll();
+    List<korisnik>findAll();
 
-    void delete(Korisnik korisnik);
+    void delete(korisnik korisnik);
 
-    Korisnik insert(Korisnik korisnik);
+//    Korisnik insert(Korisnik korisnik);
 
-    Korisnik edit(Korisnik korisnik);
+    korisnik save(korisnik korisnik);
 
     void deleteById(Long iDKorisnik);
 }

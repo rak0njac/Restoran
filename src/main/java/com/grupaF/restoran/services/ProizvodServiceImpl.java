@@ -1,6 +1,5 @@
 package com.grupaF.restoran.services;
 
-import com.grupaF.restoran.models.Korisnik;
 import com.grupaF.restoran.models.Proizvod;
 import com.grupaF.restoran.repositories.ProizvodRepository;
 import org.springframework.beans.factory.annotation.Autowired;
