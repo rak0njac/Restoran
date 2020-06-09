@@ -43,7 +43,12 @@
             <tr th:each="porudzbina : ${porudzbine}">
 <!--                <td th:text="${porudzbina.iDPorudzbine}"></td>-->
                 <td th:text="${porudzbina.datum}"></td>
-                <td th:text="${porudzbina.otkazano}"></td>
+               <!-- <td th:text="${porudzbina.otkazano}"></td>-->
+                <td>
+                    <span th:if="${porudzbina.otkazano == 'false'}">Otkazana</span>
+                    <span th:unless="${porudzbina.otkazano == 'false'}">Aktivna</span>
+
+                </td>
                 <td th:text="${porudzbina.vreme}"></td>
             </tr>
             </tbody>
