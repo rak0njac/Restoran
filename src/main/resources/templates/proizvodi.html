@@ -25,9 +25,9 @@
 </head>
 <body>
 <div th:switch="${proizvodi}">
-    <h2 th:case="null">Nema proizvoda!</h2>
+    <h2 style="color: white" th:case="null">Nema proizvoda!</h2>
     <div th:case="*">
-        <h2>Proizvodi</h2>
+        <h2 style="color: white">Proizvodi</h2>
         <table class="table">
             <thead>
             <tr>
@@ -37,7 +37,7 @@
                 <th>Opis</th>
                 <th>Cena</th>
                 <th>Slika</th>
-
+                <th></th>
             </tr>
             </thead>
             <tbody>
@@ -47,7 +47,7 @@
                 <td th:text="${proizvod.vrsta}"></td>
                 <td th:text="${proizvod.opis}"></td>
                 <td th:text="${proizvod.cena}"></td>
-                <td><img th:src="${proizvod.slika}"/></td>
+                <td><img th:src="@{${proizvod.slika}}"/></td>
                 <td> <a href="#" th:href="@{proizvodi/delete/} + ${proizvod.iDProizvod}">Obriši</a></td>
 <!--            <td> <a href="#" th:href="@{proizvodi/getProizvod/} + ${korisnik.iDKorisnik}">Pretraga prema ID</a></td>-->
             </tr>

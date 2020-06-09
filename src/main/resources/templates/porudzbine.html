@@ -26,26 +26,25 @@
 <body>
 
 <div th:switch="${porudzbine}">
-    <h2 th:case="null">Nema porudzbina!</h2>
+    <h2 style="color: white" th:case="null">Nema porudzbina!</h2>
     <div th:case="*">
-        <h2>Porudzbine</h2>
+        <h2 style="color: white">Porudzbine</h2>
         <table class="table">
             <thead>
             <tr>
-                <th>ID porudzbine</th>
-                <th>Otkazano</th>
+<!--                <th>ID porudzbine</th>-->
                 <th>Datum</th>
+                <th>Otkazano</th>
                 <th>Vreme</th>
 
             </tr>
             </thead>
             <tbody>
             <tr th:each="porudzbina : ${porudzbine}">
-                <td th:text="${porudzbina.iDPorudzbine}"></td>
-                <td th:text="${porudzbina.otkazano}"></td>
+<!--                <td th:text="${porudzbina.iDPorudzbine}"></td>-->
                 <td th:text="${porudzbina.datum}"></td>
+                <td th:text="${porudzbina.otkazano}"></td>
                 <td th:text="${porudzbina.vreme}"></td>
-
             </tr>
             </tbody>
         </table>
