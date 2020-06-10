@@ -5,6 +5,7 @@ import com.grupaF.restoran.repositories.ProizvodRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
+import javax.transaction.Transactional;
 import java.util.List;
 import java.util.Optional;
 
@@ -54,7 +55,16 @@ public class ProizvodServiceImpl implements ProizvodService{
     public Proizvod edit(Proizvod proizvod) {return proizvodRepository.save(proizvod);
     }
 
+    @Override
+    public Proizvod update(Proizvod proizvod) {
+        return proizvodRepository.save(proizvod);
+    }
 
+    @Transactional
+    @Override
+    public int editQuery(int cena, String opis, String slika, String naziv, Long iDProizvod) {
+        return proizvodRepository.editQuery(cena, opis, slika, naziv, iDProizvod);
+    }
 
 
 }

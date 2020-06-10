@@ -48,8 +48,8 @@
                 <td th:text="${proizvod.opis}"></td>
                 <td th:text="${proizvod.cena}"></td>
                 <td><img th:src="@{${proizvod.slika}}"/></td>
-                <td> <a href="#" th:href="@{proizvodi/delete/} + ${proizvod.iDProizvod}">Obriši</a></td>
-<!--            <td> <a href="#" th:href="@{proizvodi/getProizvod/} + ${korisnik.iDKorisnik}">Pretraga prema ID</a></td>-->
+                <td> <a href="#" th:href="@{/proizvodi/delete/} + ${proizvod.iDProizvod}">Obriši</a></td>
+                <td> <a href="#" th:href="@{/proizvodi/edit/} + ${proizvod.iDProizvod}">Izmeni</a></td>
             </tr>
             </tbody>
         </table>
