@@ -19,5 +19,9 @@ public interface KorisnikService {
     korisnik save(korisnik korisnik);
 
     void deleteById(Long iDKorisnik);
+
+
+    int editQuery(String adresa, String telefon, String email, String prezime, Long iDKorisnik);
+
 }
 

@@ -5,10 +5,8 @@ import com.grupaF.restoran.services.KorisnikService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
-import org.springframework.validation.BindingResult;
 import org.springframework.web.bind.annotation.*;
 
-import javax.validation.Valid;
 import java.util.List;
 import java.util.Optional;
 
@@ -70,23 +68,12 @@ public class KorisnikController {
         return "updateKorisnik";
     }
 
-    @PostMapping("/edit/{id}")
-    public String edit(@PathVariable("id") Long id, @Valid korisnik korisnik,
-                             BindingResult result, Model model) {
-        if (result.hasErrors()) {
-            korisnik.setiDKorisnik(id);
-            return "updateKorisnik";
-        }
-        korisnikService.deleteById(id);
-        //Ideja je da prvo odradimo deleteById odabranog korisnika, a zatim ubacimo novog korisnika sa identicnim
-        //ID a novim podacima unetim u edit formi. Ako ne uradimo tako, hibernate se buni jer diramo ID korisnika koji
-        //od kojeg zavisi tabela Porudzbina. Medjutim, ne radi kako treba, jer nakon sto uradimo save, umesto da mu dodeli
-        //ID koji smo upisali u formi, on mu dodeljuje automatski ID uvecan za 1 od poslednjeg ID (kao sto bi trebalo kad
-        //ne bi bio upisan nikakav ID). Takodje, hibernate ne dozvoljava edit ako u formi nisu upisani svi podaci koji su
-        // u modelu stavljeni kao NotBlank ili neke druge validacione restrikcije. Ovo se delimicno moze resiti stavljanjem
-        // hidden na te nepotrebne inpute u edit formi, ali je to katastrofa za security a i generalno. FIXME!
-        korisnikService.save(korisnik);
-        model.addAttribute("korisnici", korisnikService.findAll());
+    @PostMapping("/edit")
+    public String edit(@RequestParam("iDKorisnik") Long iDKorisnik,  @RequestParam("adresa") String adresa, @RequestParam("telefon") String telefon, @RequestParam("email") String email, @RequestParam("prezime") String prezime, Model model)
+                              {
+        korisnikService.editQuery(adresa, telefon, email, prezime, iDKorisnik);
+                                  List<korisnik>korisnici = korisnikService.findAll();
+                                  model.addAttribute("korisnici",korisnici);
         return "korisnici";
     }
 
@@ -99,4 +86,5 @@ public class KorisnikController {
         model.addAttribute("korisnici", korisnikService.findAll());
         return "korisnici";
     }
+
 }
