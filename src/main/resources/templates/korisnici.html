@@ -30,7 +30,7 @@
                 <th>Adresa</th>
                 <th></th>
                 <th></th>
-                <th></th>
+<!--                <th></th>-->
             </tr>
             </thead>
             <tbody>
@@ -42,9 +42,9 @@
                 <td th:text="${korisnik.telefon}"></td>
                 <td th:text="${korisnik.email}"></td>
                 <td th:text="${korisnik.adresa}"></td>
-                <td> <a href="#" th:href="@{korisnici/delete/} + ${korisnik.iDKorisnik}">Obriši</a></td>
-                <td> <a href="#" th:href="@{korisnici/edit/} + ${korisnik.iDKorisnik}">Izmeni</a></td>
-                <td> <a href="#" th:href="@{korisnici/getKorisnik/} + ${korisnik.iDKorisnik}">Prikaži</a></td>
+                <td> <a href="#" th:href="@{/korisnici/delete/} + ${korisnik.iDKorisnik}">Obriši</a></td>
+                <td> <a href="#" th:href="@{/korisnici/edit/} + ${korisnik.iDKorisnik}">Izmeni</a></td>
+<!--                <td> <a href="#" th:href="@{/korisnici/getKorisnik/} + ${korisnik.iDKorisnik}">Prikaži</a></td>-->
             </tr>
             </tbody>
         </table>
