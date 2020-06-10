@@ -1,6 +1,7 @@
 package com.grupaF.restoran.controllers;
 
 import com.grupaF.restoran.models.Proizvod;
+import com.grupaF.restoran.models.korisnik;
 import com.grupaF.restoran.services.ProizvodService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
@@ -51,7 +52,7 @@ public class ProizvodController {
 //    }
 
     @PostMapping("/editProizvod/{idProizvod}")
-    public String updateUser(@PathVariable("idProizvod") long idProizvod, @Valid Proizvod proizvod,
+    public String updateProizvod(@PathVariable("idProizvod") long idProizvod, @Valid Proizvod proizvod,
                              BindingResult result, Model model) {
         if (result.hasErrors()) {
             proizvod.setiDProizvod(idProizvod);
@@ -61,5 +62,24 @@ public class ProizvodController {
         proizvodService.insert(proizvod);
         model.addAttribute("proizvodi", proizvodService.findAll());
         return "index";
+    }
+
+    @GetMapping("/edit/{id}")
+    public String edit(@PathVariable("id") Long id, Model model) {
+        Proizvod proizvod = proizvodService.findById(id)
+                .orElseThrow(() -> new IllegalArgumentException("Ne postoji korisnik sa ID " + id));
+        model.addAttribute("proizvod", proizvod);
+        return "updateProizvod";
+    }
+
+
+    @PostMapping("/edit")
+    public String edit(@RequestParam("iDProizvod") Long iDProizvod,  @RequestParam("opis") String opis, @RequestParam("cena") int cena,
+                       @RequestParam("slika") String slika,   @RequestParam("naziv") String naziv, Model model)
+    {
+        proizvodService.editQuery(cena, opis, slika, naziv, iDProizvod);
+        List<Proizvod> proizvodi = proizvodService.findAll();
+        model.addAttribute("proizvodi", proizvodi);
+        return "proizvodi";
     }
 }
