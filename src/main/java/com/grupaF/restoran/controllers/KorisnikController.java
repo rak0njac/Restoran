@@ -20,16 +20,25 @@ public class KorisnikController {
     private KorisnikService korisnikService;
 
 
-    @GetMapping(value = "/getKorisnik/{id}")
-    public String getKorisnik(@PathVariable Long id, Model model) {
-          Optional<korisnik> k = this.korisnikService.findById(id);
-        if (k.isPresent()) {
-            model.addAttribute("korisnik", k.get());
-            return "profilKorisnik";
-        }
-        else{
-            return "Error";
-        }
+//    @GetMapping(value = "/getKorisnik/{id}")
+//    public String getKorisnik(@PathVariable Long id, Model model) {
+//          Optional<korisnik> k = this.korisnikService.findById(id);
+//        if (k.isPresent()) {
+//            model.addAttribute("korisnik", k.get());
+//            return "profilKorisnik";
+//        }
+//        else{
+//            return "Error";
+//        }
+//    }
+
+    @GetMapping("/getKorisnik")
+    public String pidUserSubmit(@RequestParam("myid") Long myid, Model model) {
+        //log.debug("*** MY ID: {}", myid);
+        Optional<korisnik> k = this.korisnikService.findById(myid);
+        model.addAttribute("korisnik", k.get());
+
+        return "profilKorisnik";
     }
 
     @GetMapping
