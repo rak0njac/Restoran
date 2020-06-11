@@ -9,6 +9,8 @@ import org.springframework.validation.BindingResult;
 import org.springframework.web.bind.annotation.*;
 
 import javax.validation.Valid;
+import java.io.UnsupportedEncodingException;
+import java.net.URLDecoder;
 import java.util.List;
 
 @Controller
@@ -36,6 +38,19 @@ public class ProizvodController {
 
         model.addAttribute("proizvodi", proizvodService.findAll());
         return "proizvodi";
+    }
+
+    @GetMapping(value="/proizvodPoVrsti/{vrsta}")
+    public String prPoVr(@PathVariable("vrsta") String vrsta, Model model)
+    {
+//        try {
+//            vrsta = URLDecoder.decode(vrsta, "UTF-8");
+//        } catch (UnsupportedEncodingException e) {
+//            e.printStackTrace();
+//        }
+        List<Proizvod> proizvodi = this.proizvodService.findByVrsta(vrsta);
+        model.addAttribute("proizvodi", proizvodi);
+        return "dostava";
     }
 
 //    @GetMapping(value = "/editProizvod/{id}")
