@@ -52,8 +52,13 @@ public class LoginRegistarController {
     }
    @GetMapping
    public String homePage(){
-        return "loginSingin";
+        return "index";
    }
+
+//    @GetMapping
+//    public String logReg(){
+//        return "loginSingin";
+//    }
 
     @PostMapping(value = "/dodaj")
     public String dodaj(@RequestParam String username, @RequestParam String password, @RequestParam String ime, @RequestParam String prezime,
