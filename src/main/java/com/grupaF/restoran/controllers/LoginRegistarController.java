@@ -7,58 +7,46 @@ import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.*;
 
+import javax.servlet.http.HttpSession;
 import java.util.Optional;
 
 
 @Controller
-
 public class LoginRegistarController {
 
     @Autowired
     private KorisnikService korisnikService;
 
+    @GetMapping(value="/licniKarton")
+    public String profil(){return "licniKarton"; }
 
-    //@GetMapping (value="/login/{username}/{password}") - ne koristi se nikada kada trebaju da se uzimaju neki vazni podaci
-    //Razlika izmedju PathVarivable  to mi je - /login/{username} - i vide mu se parametri u brauzeru - putanje
-    //RequestParam - bice u brauzeru login?username=mikimiki&password=mikica13 ide sa GetMapping
-
-    //RequestBody - json format i u njemu su samo sakriveni parametri
-    //@PostMapping(value="/login")
-    //@ResponseBody
-    /*public String login(@RequestBody Korisnik korisnik, Model model){
-        System.out.println(korisnik);
-        Optional<Korisnik> k = this.korisnikService.findByUsernameAndPassword(korisnik.getUsername(), korisnik.getPassword());
-        if(k.isPresent()){
-            model.addAttribute("korisnici", k.get());
-
-            return "index";
-        }
-        else {
-            model.addAttribute("korisnici", korisnik);
-            return "profil";
-        }
-
-}*/
-    //@GetMapping(value="/login/{username}/{password}")
     @PostMapping(value = "/login")
-    public String login(@RequestParam String username, @RequestParam String password, Model model){
+    public String login(@RequestParam String username, HttpSession session , @RequestParam String password, Model model){
         Optional<korisnik> k = this.korisnikService.findByUsernameAndPassword(username, password);
         if(k.isPresent()){
-            model.addAttribute("korisnici", k.get());
+            korisnik m=new korisnik();
+            session.setAttribute("id", k.get().getiDKorisnik());
+            session.setAttribute("prezime", k.get().getPrezime());
+            session.setAttribute("ime", k.get().getIme());
+            session.setAttribute("adresa", k.get().getAdresa());
+            session.setAttribute("telefon", k.get().getTelefon());
+            session.setAttribute("email", k.get().getEmail());
+            session.setAttribute("username", k.get().getUsername());
+//            session.setAttribute("korisnik", k.get());
             return "index";
         }
         else return "error1";
 
     }
-   @GetMapping
-   public String homePage(){
+
+    @GetMapping(value="/registracija")
+    public String reg(){return "loginSingin"; }
+
+    @GetMapping
+    public String homePage(){
         return "index";
    }
 
-//    @GetMapping
-//    public String logReg(){
-//        return "loginSingin";
-//    }
 
     @PostMapping(value = "/dodaj")
     public String dodaj(@RequestParam String username, @RequestParam String password, @RequestParam String ime, @RequestParam String prezime,
@@ -75,7 +63,6 @@ public class LoginRegistarController {
         k.setEmail(email);
         k.setAdresa(adresa);
 
-        //komentar
 
         korisnikService.save(k);
 
