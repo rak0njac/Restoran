@@ -1,7 +1,6 @@
 package com.grupaF.restoran.controllers;
 
 import com.grupaF.restoran.models.Proizvod;
-import com.grupaF.restoran.models.korisnik;
 import com.grupaF.restoran.services.ProizvodService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
@@ -74,12 +73,42 @@ public class ProizvodController {
 
 
     @PostMapping("/edit")
-    public String edit(@RequestParam("iDProizvod") Long iDProizvod,  @RequestParam("opis") String opis, @RequestParam("cena") int cena,
-                       @RequestParam("slika") String slika,   @RequestParam("naziv") String naziv, Model model)
+    public String edit(@RequestParam("iDProizvod") Long iDProizvod, @RequestParam("opis") String opis, @RequestParam("cena") int cena,
+                       @RequestParam("slika") String slika, @RequestParam("naziv") String naziv, Model model)
     {
         proizvodService.editQuery(cena, opis, slika, naziv, iDProizvod);
         List<Proizvod> proizvodi = proizvodService.findAll();
         model.addAttribute("proizvodi", proizvodi);
         return "proizvodi";
     }
+
+    @GetMapping("/dodajProizvod")
+    public String dodajP() {
+
+        return "noviProizvod";
+    }
+
+    @PostMapping(value = "/dodajProizvod")
+    public String dodaj(@RequestParam String naziv, @RequestParam String vrsta, @RequestParam String opis,
+                        @RequestParam int cena, @RequestParam String slika,
+                         Model model)
+    {
+        Proizvod p = new Proizvod();
+        p.setNaziv(naziv);
+        p.setVrsta(vrsta);
+        p.setOpis(opis);
+        p.setCena(cena);
+        p.setSlika(slika);
+
+        //komentar
+
+        proizvodService.insert(p);
+
+        List<Proizvod> proizvodi = proizvodService.findAll();
+        model.addAttribute("proizvodi", proizvodi);
+
+        return "proizvodi";
+    }
+
+
 }

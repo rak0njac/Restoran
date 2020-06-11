@@ -24,6 +24,7 @@
     </style>
 </head>
 <body>
+<a href="#" th:href="@{/proizvodi/dodajProizvod}">DODAJ</a>
 <div th:switch="${proizvodi}">
     <h2 style="color: white" th:case="null">Nema proizvoda!</h2>
     <div th:case="*">
