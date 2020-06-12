@@ -1,0 +1,66 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.w3.org/1999/xhtml">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <style>
+        .update-form{
+            padding: 10px;
+            width: 25%;
+            margin: 0px auto;
+        }
+    </style>
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css" integrity="sha384-Vkoo8x4CGsO3+Hhxv8T/Q5PaXtkKtu6ug5TOeNV6gBiFeWPGFN9MuhOf23Q9Ifjh" crossorigin="anonymous">
+
+</head>
+<body>
+<nav class="navbar navbar-dark bg-dark">
+    <a class="navbar-brand">Restoran F</a>
+</nav>
+
+<!--<form class="update-form">-->
+<!--    <div class="form-group">-->
+<!--        <label for="email">Email</label>-->
+<!--        <input type="email" class="form-control" id="email">-->
+<!--    </div>-->
+<!--    <div class="form-group">-->
+<!--        <label for="telefon">Telefon</label>-->
+<!--        <input type="text" class="form-control" id="telefon">-->
+<!--    </div>-->
+<!--    <div class="form-group">-->
+<!--        <label for="adresa">Adresa</label>-->
+<!--        <input type="text" class="form-control" id="adresa">-->
+<!--    </div>-->
+<!--    <div class="form-group">-->
+<!--        <label for="password">Sifra</label>-->
+<!--        <input type="text" class="form-control" id="password">-->
+<!--    </div>-->
+<!--    <button type="izmeni" class="btn btn-primary">Izmeni</button>-->
+<!--</form>-->
+
+<form action="#"
+      th:action="@{/korisnici/editProfil}"
+      th:object="${korisnik}"
+      method="post">
+    <label for="email">E-mail</label>
+    <input type="email" th:field="*{email}" id="email" class="form-control" placeholder="E-mail" th:value="*{email}">
+    <span th:if="${#fields.hasErrors('email')}" th:errors="*{email}"></span>
+    <label for="prezime">Prezime</label>
+    <input type="text" th:field="*{prezime}" id="prezime" class="form-control" placeholder="Prezime" th:value="*{prezime}">
+    <span th:if="${#fields.hasErrors('prezime')}" th:errors="*{prezime}"></span>
+    <label for="adresa">Adresa</label>
+    <input type="text" th:field="*{adresa}" id="adresa" class="form-control" placeholder="Adresa" th:value="*{adresa}">
+    <span th:if="${#fields.hasErrors('adresa')}" th:errors="*{adresa}"></span>
+    <label for="telefon">Telefon</label>
+    <input type="tel" th:field="*{telefon}" id="telefon" class="form-control" placeholder="Telefon" th:value="*{telefon}">
+    <span th:if="${#fields.hasErrors('telefon')}" th:errors="*{telefon}"></span>
+    <input type="hidden" th:field="*{iDKorisnik}" id="iDKorisnik" class="form-control" placeholder="ID" th:value="*{iDKorisnik}">
+    <input type="submit" value="Update User">
+</form>
+
+
+<script src="https://code.jquery.com/jquery-3.4.1.slim.min.js" integrity="sha384-J6qa4849blE2+poT4WnyKhv5vZF5SrPo0iEjwBvKU7imGFAV0wwj1yYfoRSJoZ+n" crossorigin="anonymous"></script>
+<script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.0/dist/umd/popper.min.js" integrity="sha384-Q6E9RHvbIyZFJoft+2mJbHaEWldlvI9IOYy5n3zV9zzTtmI3UksdQRVvoxMfooAo" crossorigin="anonymous"></script>
+<script src="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/js/bootstrap.min.js" integrity="sha384-wfSDF2E50Y2D1uUdj0O3uMBJnjuUD4Ih7YwaYd1iqfktj0Uod8GCExl3Og8ifwB6" crossorigin="anonymous"></script>
+</body>
+</html>

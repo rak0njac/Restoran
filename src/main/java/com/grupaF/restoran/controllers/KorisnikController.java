@@ -77,8 +77,26 @@ public class KorisnikController {
         return "korisnici";
     }
 
+    @GetMapping("/editProfil/{id}")
+    public String editProfil(@PathVariable("id") Long id, Model model) {
+        korisnik korisnik = korisnikService.findById(id)
+                .orElseThrow(() -> new IllegalArgumentException("Ne postoji korisnik sa ID " + id));
+        model.addAttribute("korisnik", korisnik);
+        return "updateKorisnik";
+    }
 
-   @RequestMapping(value="/delete/{iDKorisnik}")
+    @PostMapping("/editProfil")
+    public String editProfil(@RequestParam("iDKorisnik") Long iDKorisnik,  @RequestParam("adresa") String adresa, @RequestParam("telefon") String telefon,
+                             @RequestParam("email") String email, @RequestParam("prezime") String prezime)
+    {
+        korisnikService.editQuery(adresa, telefon, email, prezime, iDKorisnik);
+
+        return "profilKorisnik";
+    }
+
+
+
+    @RequestMapping(value="/delete/{iDKorisnik}")
     public String delete(@PathVariable("iDKorisnik") long iDKorisnik, Model model) {
         korisnik korisnik = korisnikService.findById(iDKorisnik)
                 .orElseThrow(() -> new IllegalArgumentException("Ne postoji korisnik sa unetim id:" + iDKorisnik));
