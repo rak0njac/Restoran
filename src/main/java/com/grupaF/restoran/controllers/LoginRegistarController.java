@@ -20,6 +20,9 @@ public class LoginRegistarController {
     @GetMapping(value="/licniKarton")
     public String profil(){return "licniKarton"; }
 
+    @GetMapping(value="/kontakt")
+    public String kontakt(){return "kontakt"; }
+
     @PostMapping(value = "/login")
     public String login(@RequestParam String username, HttpSession session , @RequestParam String password, Model model){
         Optional<korisnik> k = this.korisnikService.findByUsernameAndPassword(username, password);
@@ -45,7 +48,7 @@ public class LoginRegistarController {
     @GetMapping
     public String homePage(){
         return "index";
-   }
+    }
 
 
     @PostMapping(value = "/dodaj")
