@@ -4,19 +4,24 @@
     <meta charset="UTF-8">
     <title>Licni karton</title>
         <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css" integrity="sha384-Vkoo8x4CGsO3+Hhxv8T/Q5PaXtkKtu6ug5TOeNV6gBiFeWPGFN9MuhOf23Q9Ifjh" crossorigin="anonymous">
-
-</head>
-<body>
-<header th:replace="fragments/header :: header">
-</header>
-    <h1 align="center">Licni karton</h1>
-
     <style>
 div {
   background-image: url('https://contacts.google.com/?hl=sr&tab=iC&authuser=0.jpg');
 }
+.table{
+border: 2px solid blue;
+padding: 20px;
+}
 </style>
-    <table width="305" border="0" cellspacing="0" cellpadding="0">
+</head>
+<body>
+<header th:replace="fragments/header :: header">
+
+</header>
+    <h1 align="center">Licni karton</h1>
+
+
+    <table width="305" border="0" cellspacing="0" cellpadding="0" class="table">
         <tr>
             <td width="140" valign="top">Prezime: </td>
             <td width="165" valign="top" class="desnotd"><p th:text="${#session.getAttribute('prezime')}"></p></td>

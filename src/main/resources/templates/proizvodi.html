@@ -21,16 +21,20 @@
   .table-bordered td {
     border: 1px solid #ddd !important;
   }
+  .btn{
+  float: left;
+  }
     </style>
 </head>
 <body>
 <header th:replace="fragments/header :: header">
 </header>
-<a href="#" th:href="@{/proizvodi/dodajProizvod}">DODAJ</a>
+
 <div th:switch="${proizvodi}">
     <h2 style="color: white" th:case="null">Nema proizvoda!</h2>
     <div th:case="*">
         <h2 style="color: white">Proizvodi</h2>
+        <a href="#" th:href="@{/proizvodi/dodajProizvod}"><button class="btn btn-primary">Unesi proizvod</button></a>
         <table class="table">
             <thead>
             <tr>
@@ -40,6 +44,7 @@
                 <th>Opis</th>
                 <th>Cena</th>
                 <th>Slika</th>
+                <th></th>
                 <th></th>
             </tr>
             </thead>

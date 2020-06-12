@@ -9,6 +9,10 @@
             width: 25%;
             margin: 0px auto;
         }
+        .form{
+        width: 25%;
+        padding: 10px;
+        }
     </style>
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css" integrity="sha384-Vkoo8x4CGsO3+Hhxv8T/Q5PaXtkKtu6ug5TOeNV6gBiFeWPGFN9MuhOf23Q9Ifjh" crossorigin="anonymous">
 
@@ -16,11 +20,11 @@
 <body>
 <header th:replace="fragments/header :: header">
 </header>
-
+<h2>Novi proizvod</h2>
 <form action="#"
       th:action="@{/proizvodi/dodajProizvod}"
 
-      method="post">
+      method="post" class="form">
 <!--    <label for="iDProizvod">ID</label>-->
 <!--    <input type="text" th:field="*{iDProizvod}" id="iDProizvod" class="form-control" placeholder="ID" th:value="*{iDProizvod}">-->
 <!--    <span th:if="${#fields.hasErrors('iDProizvod')}" th:errors="*{iDProizvod}"></span>-->
