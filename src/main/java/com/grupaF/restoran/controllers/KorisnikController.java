@@ -1,6 +1,6 @@
 package com.grupaF.restoran.controllers;
 
-import com.grupaF.restoran.models.korisnik;
+import com.grupaF.restoran.models.Korisnik;
 import com.grupaF.restoran.services.KorisnikService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
@@ -34,7 +34,7 @@ public class KorisnikController {
     @GetMapping("/getKorisnik")
     public String pidUserSubmit(@RequestParam("myid") Long myid, Model model) {
         //log.debug("*** MY ID: {}", myid);
-        Optional<korisnik> k = this.korisnikService.findById(myid);
+        Optional<Korisnik> k = this.korisnikService.findById(myid);
         model.addAttribute("korisnik", k.get());
 
         return "profilKorisnik";
@@ -43,7 +43,7 @@ public class KorisnikController {
     @GetMapping
     public String getAll(Model model) {
         //Model salje podatke za renderovanje
-        List<korisnik>korisnici = korisnikService.findAll();
+        List<Korisnik>korisnici = korisnikService.findAll();
         model.addAttribute("korisnici",korisnici);
         return "korisnici";
     }
@@ -63,7 +63,7 @@ public class KorisnikController {
 //    }
     @GetMapping("/edit/{id}")
     public String edit(@PathVariable("id") Long id, Model model) {
-        korisnik korisnik = korisnikService.findById(id)
+        Korisnik korisnik = korisnikService.findById(id)
                 .orElseThrow(() -> new IllegalArgumentException("Ne postoji korisnik sa ID " + id));
         model.addAttribute("korisnik", korisnik);
         return "updateKorisnik";
@@ -73,14 +73,14 @@ public class KorisnikController {
     public String edit(@RequestParam("iDKorisnik") Long iDKorisnik,  @RequestParam("adresa") String adresa, @RequestParam("telefon") String telefon, @RequestParam("email") String email, @RequestParam("prezime") String prezime, Model model)
                               {
         korisnikService.editQuery(adresa, telefon, email, prezime, iDKorisnik);
-                                  List<korisnik>korisnici = korisnikService.findAll();
+                                  List<Korisnik>korisnici = korisnikService.findAll();
                                   model.addAttribute("korisnici",korisnici);
         return "korisnici";
     }
 
     @GetMapping("/editProfil/{id}")
     public String editProfil(@PathVariable("id") Long id, Model model) {
-        korisnik korisnik = korisnikService.findById(id)
+        Korisnik korisnik = korisnikService.findById(id)
                 .orElseThrow(() -> new IllegalArgumentException("Ne postoji korisnik sa ID " + id));
         model.addAttribute("korisnik", korisnik);
         return "UpdateKorisnikLicniKarton";
@@ -92,7 +92,7 @@ public class KorisnikController {
     {
         korisnikService.editQuery(adresa, telefon, email, prezime, iDKorisnik);
 
-        korisnik k = korisnikService.findById(iDKorisnik).orElseThrow(() -> new IllegalArgumentException("Ne postoji korisnik sa ID " + iDKorisnik));
+        Korisnik k = korisnikService.findById(iDKorisnik).orElseThrow(() -> new IllegalArgumentException("Ne postoji korisnik sa ID " + iDKorisnik));
 
         session.setAttribute("prezime", k.getPrezime());
         session.setAttribute("ime", k.getIme());
@@ -110,7 +110,7 @@ public class KorisnikController {
 
     @RequestMapping(value="/delete/{iDKorisnik}")
     public String delete(@PathVariable("iDKorisnik") long iDKorisnik, Model model) {
-        korisnik korisnik = korisnikService.findById(iDKorisnik)
+        Korisnik korisnik = korisnikService.findById(iDKorisnik)
                 .orElseThrow(() -> new IllegalArgumentException("Ne postoji korisnik sa unetim id:" + iDKorisnik));
         korisnikService.deleteById(korisnik.getiDKorisnik());
         model.addAttribute("korisnici", korisnikService.findAll());

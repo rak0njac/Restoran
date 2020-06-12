@@ -2,7 +2,10 @@ package com.grupaF.restoran.models;
 
 import javax.persistence.*;
 import java.sql.Time;
+import java.time.LocalDateTime;
+import java.time.LocalTime;
 import java.util.Date;
+import java.util.Optional;
 import java.util.Set;
 
 @Entity
@@ -19,10 +22,18 @@ public class Porudzbina {
     private Date datum;
 
     @Column(name = "vreme")
-    private Time vreme;
+    private LocalTime vreme;
+
+    public Korisnik getKorisnik() {
+        return korisnik;
+    }
+
+    public void setKorisnik(Korisnik korisnik) {
+        this.korisnik = korisnik;
+    }
 
     @ManyToOne
-    private com.grupaF.restoran.models.korisnik korisnik;
+    private Korisnik korisnik;
 
     @OneToMany(mappedBy = "porudzbina")
     Set<Porudzbina_proizvod> porudzbina_proizvods;
@@ -51,11 +62,11 @@ public class Porudzbina {
         this.datum = datum;
     }
 
-    public Time getVreme() {
+    public LocalTime getVreme() {
         return vreme;
     }
 
-    public void setVreme(Time vreme) {
+    public void setVreme(LocalTime vreme) {
         this.vreme = vreme;
     }
 

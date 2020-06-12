@@ -1,8 +1,6 @@
 package com.grupaF.restoran.controllers;
 
 import com.grupaF.restoran.models.Proizvod;
-import com.grupaF.restoran.models.korisnik;
-import com.grupaF.restoran.services.KorisnikService;
 import com.grupaF.restoran.services.ProizvodService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
@@ -10,7 +8,6 @@ import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
-import java.util.Optional;
 
 @Controller
 @RequestMapping("/dostava")
