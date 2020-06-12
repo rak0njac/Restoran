@@ -82,7 +82,7 @@ public class KorisnikController {
         korisnik korisnik = korisnikService.findById(id)
                 .orElseThrow(() -> new IllegalArgumentException("Ne postoji korisnik sa ID " + id));
         model.addAttribute("korisnik", korisnik);
-        return "updateKorisnik";
+        return "updateKorisnikLicniKarton";
     }
 
     @PostMapping("/editProfil")
