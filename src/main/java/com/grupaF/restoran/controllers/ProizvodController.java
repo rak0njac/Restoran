@@ -50,7 +50,9 @@ public class ProizvodController {
 //        }
         List<Proizvod> proizvodi = this.proizvodService.findByVrsta(vrsta);
         model.addAttribute("proizvodi", proizvodi);
-        return "dostava";
+        //return "dostava".concat(" :: tbody");
+        return "dostava".concat(" :: dostava");
+        //SIGNUP_VIEW_NAME.concat(" :: signupForm");
     }
 
 //    @GetMapping(value = "/editProizvod/{id}")

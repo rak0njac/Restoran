@@ -6,6 +6,8 @@
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css" integrity="sha384-Vkoo8x4CGsO3+Hhxv8T/Q5PaXtkKtu6ug5TOeNV6gBiFeWPGFN9MuhOf23Q9Ifjh" crossorigin="anonymous">
 </head>
 <body>
+<header th:replace="fragments/header :: header">
+</header>
     <div class="container">
         <div class="row">
             <div class="col col-3">
@@ -16,7 +18,7 @@
                     </tr>
                     </thead>
                     <tbody id="kat">
-                        <tr th:each="proizvod : ${proizvodi}">
+                        <tr th:each="proizvod : ${proizvodi}" style="display: none">
                             <td>
                                 <button class="btn btn-primary" th:text="${proizvod.vrsta}" onclick="changeKat(this)"/>
                             </td>
@@ -24,20 +26,34 @@
                     </tbody>
                 </table>
             </div>
-            <div class="col col-9">
+            <div class="col col-6">
                 <table class="table">
                     <thead>
                     <tr>
                         <th>Proizvod</th>
                     </tr>
                     </thead>
-                    <tbody id="pro">
+                    <tbody id="pro" th:fragment="dostava">
                     <tr th:each="proizvod : ${proizvodi}">
-                        <td th:text="${proizvod.naziv}"></td>
+                        <td>
+                            <button class="btn btn-primary" th:text="${proizvod.naziv}" onclick="addToCart(this)"/>
+                        </td>
                     </tr>
                     </tbody>
                 </table>
             </div>
+            <div class="col col-3">
+                <table class="table">
+                    <thead>
+                    <tr>
+                        <th>Korpa</th>
+                    </tr>
+                    </thead>
+                    <tbody id="kor">
+                    </tbody>
+                </table>
+            </div>
+
         </div>
     </div>
 
@@ -66,14 +82,26 @@
     {
         var kat = $(element).text()
         //var proizvodi = [];
-        location.href = "/proizvodi/proizvodPoVrsti/" + kat
-        // $.ajax({
-        //     type : 'GET',
-        //     url : "/proizvodi/proizvodPoVrsti/" + kat,
-        //     complete : function () {
-        //         location.reload()
-        //     }
-        // });
+        //location.href = "/proizvodi/proizvodPoVrsti/" + kat
+        $.ajax({
+            type : 'GET',
+            url : "/proizvodi/proizvodPoVrsti/" + kat,
+            success : function (data) {
+                console.log(data)
+                $("#pro").replaceWith(data);
+            }
+        });
+    }
+
+    function addToCart(element)
+    {
+        var item = $(element).text()
+        $("#kor").append('<tr><td>' + item + '<button class="btn btn-danger" style="float: right" onclick="removeFromCart(this)">X</button></td></tr>')
+    }
+
+    function removeFromCart(element)
+    {
+        $(element).parents("tr").remove()
     }
 </script>
 </body>
