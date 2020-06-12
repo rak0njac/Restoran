@@ -50,6 +50,9 @@
                     </tr>
                     </thead>
                     <tbody id="kor">
+                    <tr>
+                        <td><button id="finish" class="btn btn-primary" onclick="finish()">Završi kupovinu</button></td>
+                    </tr>
                     </tbody>
                 </table>
             </div>
@@ -96,12 +99,23 @@
     function addToCart(element)
     {
         var item = $(element).text()
-        $("#kor").append('<tr><td>' + item + '<button class="btn btn-danger" style="float: right" onclick="removeFromCart(this)">X</button></td></tr>')
+        $("#kor").prepend('<tr><td>' + item + '<button class="btn btn-danger" style="float: right" onclick="removeFromCart(this)">X</button></td></tr>')
     }
 
     function removeFromCart(element)
     {
         $(element).parents("tr").remove()
+    }
+
+    function finish() {
+        var date = new Date();
+        var time = date.getHours() + ":" + date.getMinutes()
+        var items = $('#kor').find("td:not(#finish)").text();
+        $.post('/porudzbine/napravi', {
+            datum : date,
+            vreme : time,
+            korisnik_idkorisnik : '1'
+        }, function (){}, 'html')
     }
 </script>
 </body>

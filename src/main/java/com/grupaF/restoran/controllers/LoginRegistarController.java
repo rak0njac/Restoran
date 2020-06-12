@@ -1,6 +1,6 @@
 package com.grupaF.restoran.controllers;
 
-import com.grupaF.restoran.models.korisnik;
+import com.grupaF.restoran.models.Korisnik;
 import com.grupaF.restoran.services.KorisnikService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
@@ -22,9 +22,9 @@ public class LoginRegistarController {
 
     @PostMapping(value = "/login")
     public String login(@RequestParam String username, HttpSession session , @RequestParam String password, Model model){
-        Optional<korisnik> k = this.korisnikService.findByUsernameAndPassword(username, password);
+        Optional<Korisnik> k = this.korisnikService.findByUsernameAndPassword(username, password);
         if(k.isPresent()){
-            korisnik m=new korisnik();
+            Korisnik m=new Korisnik();
             session.setAttribute("id", k.get().getiDKorisnik());
             session.setAttribute("prezime", k.get().getPrezime());
             session.setAttribute("ime", k.get().getIme());
@@ -53,7 +53,7 @@ public class LoginRegistarController {
                         @RequestParam String telefon, @RequestParam String tip, @RequestParam String email,
                         @RequestParam String adresa, Model model)
     {
-        korisnik k = new korisnik();
+        Korisnik k = new Korisnik();
         k.setUsername(username);
         k.setPassword(password);
         k.setTelefon(telefon);

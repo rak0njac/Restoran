@@ -1,6 +1,6 @@
 package com.grupaF.restoran.services;
 
-import com.grupaF.restoran.models.korisnik;
+import com.grupaF.restoran.models.Korisnik;
 import com.grupaF.restoran.repositories.KorisnikRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
@@ -17,22 +17,22 @@ public class KorisnikServiceImpl implements KorisnikService {
     //private Object Optional;
 
     @Override
-    public Optional<korisnik> findById(Long iDKorisnik) {
+    public Optional<Korisnik> findById(Long iDKorisnik) {
         return this.korisnikRepository.findById(iDKorisnik);
     }
 
     @Override
-    public Optional<korisnik> findByUsernameAndPassword(String username, String password) {
+    public Optional<Korisnik> findByUsernameAndPassword(String username, String password) {
         return this.korisnikRepository.findByUsernameAndPassword(username, password);
     }
 
     @Override
-    public List<korisnik> findAll() {
+    public List<Korisnik> findAll() {
         return this.korisnikRepository.findAll();
     }
 
     @Override
-    public void delete(korisnik korisnik) {
+    public void delete(Korisnik korisnik) {
        korisnikRepository.delete(korisnik);
    }
 
@@ -42,7 +42,7 @@ public class KorisnikServiceImpl implements KorisnikService {
 //    }
 
     @Override
-    public korisnik save(korisnik korisnik) { return korisnikRepository.save(korisnik);
+    public Korisnik save(Korisnik korisnik) { return korisnikRepository.save(korisnik);
 
     }
 

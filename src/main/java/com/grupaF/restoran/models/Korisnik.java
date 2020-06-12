@@ -6,7 +6,7 @@ import java.util.Set;
 
 @Entity
 @Table(name = "korisniks")
-public class korisnik {
+public class Korisnik {
     @Id
     @GeneratedValue(strategy = GenerationType.AUTO)
     private Long iDKorisnik;
