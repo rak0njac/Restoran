@@ -7,6 +7,7 @@ import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.*;
 
+import javax.servlet.http.HttpSession;
 import java.util.List;
 import java.util.Optional;
 
@@ -82,16 +83,27 @@ public class KorisnikController {
         korisnik korisnik = korisnikService.findById(id)
                 .orElseThrow(() -> new IllegalArgumentException("Ne postoji korisnik sa ID " + id));
         model.addAttribute("korisnik", korisnik);
-        return "updateKorisnikLicniKarton";
+        return "UpdateKorisnikLicniKarton";
     }
 
     @PostMapping("/editProfil")
     public String editProfil(@RequestParam("iDKorisnik") Long iDKorisnik,  @RequestParam("adresa") String adresa, @RequestParam("telefon") String telefon,
-                             @RequestParam("email") String email, @RequestParam("prezime") String prezime)
+                             @RequestParam("email") String email, @RequestParam("prezime") String prezime, Model model, HttpSession session)
     {
         korisnikService.editQuery(adresa, telefon, email, prezime, iDKorisnik);
 
-        return "profilKorisnik";
+        korisnik k = korisnikService.findById(iDKorisnik).orElseThrow(() -> new IllegalArgumentException("Ne postoji korisnik sa ID " + iDKorisnik));
+
+        session.setAttribute("prezime", k.getPrezime());
+        session.setAttribute("ime", k.getIme());
+        session.setAttribute("adresa", k.getAdresa());
+        session.setAttribute("telefon", k.getTelefon());
+        session.setAttribute("email", k.getEmail());
+        session.setAttribute("username", k.getUsername());
+
+        model.addAttribute("korisnik",k);
+
+        return "licniKarton";
     }
 
 
