@@ -19,17 +19,6 @@ public class KorisnikController {
     private KorisnikService korisnikService;
 
 
-//    @GetMapping(value = "/getKorisnik/{id}")
-//    public String getKorisnik(@PathVariable Long id, Model model) {
-//          Optional<korisnik> k = this.korisnikService.findById(id);
-//        if (k.isPresent()) {
-//            model.addAttribute("korisnik", k.get());
-//            return "profilKorisnik";
-//        }
-//        else{
-//            return "Error";
-//        }
-//    }
 
     @GetMapping("/getKorisnik")
     public String pidUserSubmit(@RequestParam("myid") Long myid, Model model) {
@@ -48,19 +37,7 @@ public class KorisnikController {
         return "korisnici";
     }
 
-//    @RequestMapping("/edit/{id}"){
-////    public String updateUser(@PathVariable("iDKorisnik") long iDKorisnik, @Valid Korisnik korisnik,
-////                             BindingResult result, Model model) {
-////        if (result.hasErrors()) {
-////            korisnik.setiDKorisnik(iDKorisnik);
-////            return "profilKorisnik";
-////        }
-////
-////        korisnikService.insert(korisnik);
-////        model.addAttribute("korisnici", korisnikService.findAll());
-////        return "index";
-//
-//    }
+
     @GetMapping("/edit/{id}")
     public String edit(@PathVariable("id") Long id, Model model) {
         Korisnik korisnik = korisnikService.findById(id)
@@ -75,7 +52,7 @@ public class KorisnikController {
         korisnikService.editQuery(adresa, telefon, email, prezime, iDKorisnik);
                                   List<Korisnik>korisnici = korisnikService.findAll();
                                   model.addAttribute("korisnici",korisnici);
-        return "korisnici";
+        return "redirect:/korisnici";
     }
 
     @GetMapping("/editProfil/{id}")
@@ -103,7 +80,7 @@ public class KorisnikController {
 
         model.addAttribute("korisnik",k);
 
-        return "licniKarton";
+        return "redirect:/licniKarton";
     }
 
 

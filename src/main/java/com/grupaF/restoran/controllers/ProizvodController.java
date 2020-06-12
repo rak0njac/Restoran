@@ -72,7 +72,7 @@ public class ProizvodController {
                              BindingResult result, Model model) {
         if (result.hasErrors()) {
             proizvod.setiDProizvod(idProizvod);
-            return "proizvodi";
+            return "redirect:/proizvodi";
         }
 
         proizvodService.insert(proizvod);
@@ -96,7 +96,7 @@ public class ProizvodController {
         proizvodService.editQuery(cena, opis, slika, naziv, iDProizvod);
         List<Proizvod> proizvodi = proizvodService.findAll();
         model.addAttribute("proizvodi", proizvodi);
-        return "proizvodi";
+        return "redirect:/proizvodi";
     }
 
     @GetMapping("/dodajProizvod")
@@ -124,7 +124,7 @@ public class ProizvodController {
         List<Proizvod> proizvodi = proizvodService.findAll();
         model.addAttribute("proizvodi", proizvodi);
 
-        return "proizvodi";
+        return  "redirect:/proizvodi";
     }
 
 
