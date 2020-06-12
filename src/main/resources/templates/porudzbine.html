@@ -24,7 +24,8 @@
     </style>
 </head>
 <body>
-
+<header th:replace="fragments/header :: header">
+</header>
 <div th:switch="${porudzbine}">
     <h2 style="color: white" th:case="null">Nema porudzbina!</h2>
     <div th:case="*">

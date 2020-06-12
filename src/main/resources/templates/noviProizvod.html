@@ -14,9 +14,8 @@
 
 </head>
 <body>
-<nav class="navbar navbar-dark bg-dark">
-    <a class="navbar-brand">Restoran F</a>
-</nav>
+<header th:replace="fragments/header :: header">
+</header>
 
 <form action="#"
       th:action="@{/proizvodi/dodajProizvod}"
