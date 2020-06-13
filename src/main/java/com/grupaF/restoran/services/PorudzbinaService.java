@@ -18,4 +18,6 @@ public interface PorudzbinaService {
 
 
     List<Porudzbina> findAll();
+
+    void deleteById(Long iDPorudzbina);
 }

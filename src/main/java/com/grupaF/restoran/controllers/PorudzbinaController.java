@@ -9,10 +9,7 @@ import com.sun.org.apache.xpath.internal.operations.Bool;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.PostMapping;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RequestParam;
+import org.springframework.web.bind.annotation.*;
 
 import java.sql.Time;
 import java.time.LocalTime;
@@ -58,6 +55,16 @@ public class PorudzbinaController {
         return "porudzbine";
     }
 
+    @RequestMapping(value="/delete/{iDPorudzbina}")
+    public String delete(@PathVariable("iDPorudzbina") long iDPorudzbina, Model model) {
 
+        Porudzbina porudzbina = porudzbinaService.findByIDPorudzbina(iDPorudzbina)
+                .orElseThrow(() -> new IllegalArgumentException("Ne postoji proizvod sa unetim id:" + iDPorudzbina));
+
+        porudzbinaService.deleteById(porudzbina.getiDPorudzbina());
+
+        model.addAttribute("porudzbine", porudzbinaService.findAll());
+        return "porudzbine";
+    }
 
 }
