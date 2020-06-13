@@ -11,4 +11,5 @@ public interface PorudzbinaRepository extends JpaRepository<Porudzbina, Long> {
 
     List<Porudzbina> findByDatum(Date datum);
 
+    void deleteById(Long iDPorudzbina);
 }
