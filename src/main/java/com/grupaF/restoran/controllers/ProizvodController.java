@@ -12,6 +12,7 @@ import javax.validation.Valid;
 import java.io.UnsupportedEncodingException;
 import java.net.URLDecoder;
 import java.util.List;
+import java.util.Optional;
 
 @Controller
 @RequestMapping("/proizvodi")
@@ -97,6 +98,14 @@ public class ProizvodController {
         List<Proizvod> proizvodi = proizvodService.findAll();
         model.addAttribute("proizvodi", proizvodi);
         return "redirect:/proizvodi";
+    }
+
+    @GetMapping("/getIdProizvod/{naziv}")
+    @ResponseBody
+    public String GetIdPro(@PathVariable("naziv") String naziv)
+    {
+        Proizvod p = proizvodService.findByNaziv(naziv).get(0);
+        return p.getiDProizvod().toString();
     }
 
     @GetMapping("/dodajProizvod")

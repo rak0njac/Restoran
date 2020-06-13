@@ -11,21 +11,13 @@
             text-align:center;
             color: white;
         }
-         .container{
-            margin: 0px auto;
-            margin-top: 10%;
-            color: white;
-         }
-         .container th{
-            color: white;
-         }
     </style>
 </head>
 <body>
 <header th:replace="fragments/header :: header">
 </header>
     <div class="container">
-        <div class="row">
+        <div class="row bg-light">
             <div class="col col-3">
                 <table class="table">
                     <thead>
@@ -66,11 +58,9 @@
                     </tr>
                     </thead>
                     <tbody id="kor">
-                    <tr>
-                        <td><button id="finish" class="btn btn-primary" onclick="finish()">Završi kupovinu</button></td>
-                    </tr>
                     </tbody>
                 </table>
+                <button id="finish" style="display: none" class="btn btn-primary" onclick="finish()">Završi kupovinu</button>
             </div>
 
         </div>
@@ -95,43 +85,81 @@
             console.log('<tr><td><button class="btn btn-primary" onclick="changeKat(this)">' + item + '</button></td></tr>')
             $("#kat").append('<tr><td><button class="btn btn-primary" onclick="changeKat(this)">' + item + '</button></td></tr>')
         })
+        $("#pro").hide()
     })
 
     function changeKat(element)
     {
         var kat = $(element).text()
-        //var proizvodi = [];
-        //location.href = "/proizvodi/proizvodPoVrsti/" + kat
         $.ajax({
             type : 'GET',
             url : "/proizvodi/proizvodPoVrsti/" + kat,
             success : function (data) {
-                console.log(data)
                 $("#pro").replaceWith(data);
+                $("#pro").show()
             }
         });
+
     }
 
     function addToCart(element)
     {
         var item = $(element).text()
-        $("#kor").prepend('<tr><td>' + item + '<button class="btn btn-danger" style="float: right" onclick="removeFromCart(this)">X</button></td></tr>')
+        $("#kor").append('<tr><td>' + item + '</td><td><input style="width: 30px; float: right" type="number" min="1" value="1" </input></td>' +
+            '<td><button class="btn btn-danger" style="float: right" onclick="removeFromCart(this)">X</button></td></tr>')
+        $("#finish").show()
     }
 
     function removeFromCart(element)
     {
         $(element).parents("tr").remove()
+        var trs = $("#kor").find("tr")
+        if (trs.length == 0)
+            $("#finish").hide()
     }
 
     function finish() {
         var date = new Date();
-        var time = date.getHours() + ":" + date.getMinutes()
-        var items = $('#kor').find("td:not(#finish)").text();
-        $.post('/porudzbine/napravi', {
-            datum : date,
-            vreme : time,
-            korisnik_idkorisnik : '1'
-        }, function (){}, 'html')
+        var sati = date.getHours()
+        if(sati.toString().length == 1)
+            sati = "0" + sati;
+        var minuti = date.getMinutes()
+        if(minuti.toString().length == 1)
+            minuti = "0" + minuti;
+        var time = sati + ":" + minuti
+        //var items = $('#kor').find("td").text();
+        $.get('/korisnici/getIdKorisnik',{},function (data) {
+            var id_korisnik = data;
+            $.post('/porudzbine/napravi', {
+                datum : date,
+                vreme : time,
+                korisnik_idkorisnik : id_korisnik
+            }, function (data) {
+                console.log("ID porudzbine: " + data)
+                $('#kor').find('tr').each(function () {
+                    var td1 = $(this).find('td:first')
+                    var td2 = $(this).find('input')
+                    var proizvod = td1.text()
+                    var kolicina = td2.val()
+                    console.log(kolicina)
+                    console.log("Naziv proizvoda je: " + proizvod)
+                    var id_porudzbina = data
+                    $.get('/proizvodi/getIdProizvod/' + proizvod, {}, function (data) {
+                        console.log("ID proizvoda: " + data)
+                        var id_proizvod = data
+                        $.post('/porudzbine/napraviStavku', {
+                            iDPorudzbina : id_porudzbina,
+                            iDProizvod : id_proizvod,
+                            kolicina : kolicina,
+                            cena: '1337'
+                        }, function () {
+                            window.location.replace("/porudzbine")
+                        })
+                    }, "text")
+
+                })
+            }, "text")
+        })
     }
 </script>
 </body>

@@ -38,6 +38,14 @@ public class Porudzbina {
     @OneToMany(mappedBy = "porudzbina")
     Set<Porudzbina_proizvod> porudzbina_proizvods;
 
+    public Set<Porudzbina_proizvod> getPorudzbina_proizvods() {
+        return porudzbina_proizvods;
+    }
+
+    public void setPorudzbina_proizvods(Set<Porudzbina_proizvod> porudzbina_proizvods) {
+        this.porudzbina_proizvods = porudzbina_proizvods;
+    }
+
     public Long getiDPorudzbina() {
         return iDPorudzbina;
     }
