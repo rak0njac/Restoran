@@ -8,11 +8,14 @@
         body {
     background: url('http://209.97.163.112/wp-content/uploads/Singapore-Food-Photographer-Digitalnegative.jpg') no-repeat;
     background-size: cover;
-	text-align:center;
+    text-align: center;
 }
-.table {
+  .table {
     border-collapse: collapse !important;
-  }
+    margin: 0px auto;
+    width: 80%;
+    }
+
   .table td,
   .table th {
     background-color: #fff !important;
@@ -29,12 +32,11 @@
 <body>
 <header th:replace="fragments/header :: header">
 </header>
-
+<a href="#" th:href="@{/proizvodi/dodajProizvod}"><button class="btn btn-primary" style="margin-left: 10%;">Unesi proizvod</button></a>
 <div th:switch="${proizvodi}">
     <h2 style="color: white" th:case="null">Nema proizvoda!</h2>
     <div th:case="*">
-        <h2 style="color: white">Proizvodi</h2>
-        <a href="#" th:href="@{/proizvodi/dodajProizvod}"><button class="btn btn-primary">Unesi proizvod</button></a>
+        <h2 style="color: white; padding-left: 5px">Proizvodi</h2>
         <table class="table">
             <thead>
             <tr>

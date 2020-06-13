@@ -12,6 +12,8 @@
 }
 .table {
     border-collapse: collapse !important;
+    margin: 0px auto;
+    width: 80%;
   }
   .table td,
   .table th {
@@ -21,12 +23,14 @@
   .table-bordered td {
     border: 1px solid #ddd !important;
   }
+
+
     </style>
 </head>
 <body>
 <header th:replace="fragments/header :: header">
 </header>
-<div th:switch="${porudzbine}">
+<div  th:switch="${porudzbine}">
     <h2 style="color: white" th:case="null">Nema porudzbina!</h2>
     <div th:case="*">
         <h2 style="color: white">Porudzbine</h2>
@@ -37,7 +41,7 @@
                 <th>Datum</th>
                 <th>Otkazano</th>
                 <th>Vreme</th>
-
+                <th></th>
             </tr>
             </thead>
             <tbody>
