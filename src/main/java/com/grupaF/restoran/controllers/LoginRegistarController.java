@@ -17,8 +17,8 @@ public class LoginRegistarController {
     @Autowired
     private KorisnikService korisnikService;
 
-    @GetMapping(value="/licniKarton")
-    public String profil(){return "licniKarton"; }
+   // @GetMapping(value="/licniKarton")
+  //  public String profil(){return "licniKarton"; }
 
     @GetMapping(value="/kontakt")
     public String kontakt(){return "kontakt"; }

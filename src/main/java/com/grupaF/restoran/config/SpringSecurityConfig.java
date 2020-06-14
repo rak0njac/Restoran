@@ -29,7 +29,7 @@ public class SpringSecurityConfig  extends WebSecurityConfigurerAdapter {
                 //Gleda samo rute
                 .antMatchers("/", "/index","/kontakt", "/login", "/registracija", "/403", "/error1").permitAll()
                 .antMatchers("/img/**").permitAll()
-                .antMatchers( "/korisnici", "/proizvodi", "/updateProizvod").hasRole("ADMIN")
+                .antMatchers( "/korisnici", "/proizvodi", "/porudzbine").hasRole("ADMIN")
                 .antMatchers("/dostava", "/proizvodiUser", "/licniKarton").hasRole("USER")
                 .anyRequest().authenticated()
                 .and()
