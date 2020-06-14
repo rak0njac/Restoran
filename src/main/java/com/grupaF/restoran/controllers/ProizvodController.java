@@ -84,7 +84,7 @@ public class ProizvodController {
     @GetMapping("/edit/{id}")
     public String edit(@PathVariable("id") Long id, Model model) {
         Proizvod proizvod = proizvodService.findById(id)
-                .orElseThrow(() -> new IllegalArgumentException("Ne postoji korisnik sa ID " + id));
+                .orElseThrow(() -> new IllegalArgumentException("Ne postoji proizvod sa ID " + id));
         model.addAttribute("proizvod", proizvod);
         return "updateProizvod";
     }
@@ -94,7 +94,8 @@ public class ProizvodController {
     public String edit(@RequestParam("iDProizvod") Long iDProizvod, @RequestParam("opis") String opis, @RequestParam("cena") int cena,
                        @RequestParam("slika") String slika, @RequestParam("naziv") String naziv, Model model)
     {
-        proizvodService.editQuery(cena, opis, slika, naziv, iDProizvod);
+        String sl = "/img/" + slika;
+        proizvodService.editQuery(cena, opis, sl, naziv, iDProizvod);
         List<Proizvod> proizvodi = proizvodService.findAll();
         model.addAttribute("proizvodi", proizvodi);
         return "redirect:/proizvodi";
