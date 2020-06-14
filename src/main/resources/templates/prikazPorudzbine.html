@@ -30,34 +30,26 @@
 <body>
 <header th:replace="fragments/header :: header">
 </header>
-<div  th:switch="${porudzbine}">
-    <h2 style="color: white" th:case="null">Nema porudzbina!</h2>
-    <div th:case="*">
-        <h2 style="color: white">Porudzbine</h2>
+<div>
+    <div>
+        <h2 style="color: white">Porudzbina</h2>
         <table class="table">
             <thead>
             <tr>
 <!--                <th>ID porudzbine</th>-->
-                <th>Datum</th>
-                <th>Otkazano</th>
-                <th>Vreme</th>
-                <th></th>
-                <th></th>
+                <th>Proizvod</th>
+                <th>Cena</th>
+                <th>Kolicina</th>
             </tr>
             </thead>
             <tbody>
-            <tr th:each="porudzbina : ${porudzbine}">
+            <tr th:each="porudzbina_proizvod : ${porudzbina_proizvods}">
 <!--                <td th:text="${porudzbina.iDPorudzbine}"></td>-->
-                <td th:text="${porudzbina.datum}"></td>
+                <td th:text="${porudzbina_proizvod.proizvod.getNaziv()}"></td>
                <!-- <td th:text="${porudzbina.otkazano}"></td>-->
-                <td>
-                    <span th:if="${porudzbina.otkazano == 'false'}">Otkazana</span>
-                    <span th:unless="${porudzbina.otkazano == 'false'}">Aktivna</span>
+                <td th:text="${porudzbina_proizvod.proizvod.getCena()}"></td>
+                <td th:text="${porudzbina_proizvod.kolicina}"></td>
 
-                </td>
-                <td th:text="${porudzbina.vreme}"></td>
-                <td> <a href="#" th:href="@{porudzbine/show/} + ${porudzbina.iDPorudzbina}">Prikaži</a></td>
-                <td> <a href="#" th:href="@{porudzbine/delete/} + ${porudzbina.iDPorudzbina}">Obriši</a></td>
             </tr>
             </tbody>
         </table>

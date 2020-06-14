@@ -9,6 +9,14 @@ import javax.validation.constraints.Min;
 @Table(name = "porudzbina_proizvods")
 public class Porudzbina_proizvod {
 
+    public Porudzbina_proizvod_key getId() {
+        return id;
+    }
+
+    public void setId(Porudzbina_proizvod_key id) {
+        this.id = id;
+    }
+
     @EmbeddedId
     Porudzbina_proizvod_key id;
 
@@ -21,6 +29,15 @@ public class Porudzbina_proizvod {
     @MapsId("iDProizvod")
     @JoinColumn(name = "iDProizvod")
     Proizvod proizvod;
+
+
+    public void setPorudzbina(Porudzbina porudzbina) {
+        this.porudzbina = porudzbina;
+    }
+
+    public void setProizvod(Proizvod proizvod) {
+        this.proizvod = proizvod;
+    }
 
     @Column(name = "kolicina")
     @Min(value= 1, message="Kolicina mora biti veca od 0")

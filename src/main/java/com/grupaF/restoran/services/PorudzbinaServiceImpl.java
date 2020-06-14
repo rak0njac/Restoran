@@ -28,6 +28,11 @@ public class PorudzbinaServiceImpl implements PorudzbinaService{
     public List<Porudzbina> findAll(){return this.porudzbinaRepository.findAll();}
 
     @Override
+    public void deleteById(Long iDPorudzbina) {
+         this.porudzbinaRepository.deleteById(iDPorudzbina);
+    }
+
+    @Override
     public Porudzbina insert(Porudzbina porudzbina) {
         return porudzbinaRepository.save(porudzbina);
     }

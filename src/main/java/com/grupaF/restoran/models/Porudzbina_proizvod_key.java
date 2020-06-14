@@ -11,7 +11,7 @@ public class Porudzbina_proizvod_key implements Serializable {
     Long iDPorudzbina;
 
     @Column(name = "iDProizvod")
-    int iDProizvod;
+    Long iDProizvod;
 
     public Long getiDPorudzbina() {
         return iDPorudzbina;
@@ -21,11 +21,11 @@ public class Porudzbina_proizvod_key implements Serializable {
         this.iDPorudzbina = iDPorudzbina;
     }
 
-    public int getiDProizvod() {
+    public Long getiDProizvod() {
         return iDProizvod;
     }
 
-    public void setiDProizvod(int iDProizvod) {
+    public void setiDProizvod(Long iDProizvod) {
         this.iDProizvod = iDProizvod;
     }
 }
