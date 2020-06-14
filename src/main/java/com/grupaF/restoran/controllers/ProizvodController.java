@@ -119,12 +119,13 @@ public class ProizvodController {
                         @RequestParam int cena, @RequestParam String slika,
                          Model model)
     {
+        String sl = "/img/" + slika;
         Proizvod p = new Proizvod();
         p.setNaziv(naziv);
         p.setVrsta(vrsta);
         p.setOpis(opis);
         p.setCena(cena);
-        p.setSlika(slika);
+        p.setSlika(sl);
 
         //komentar
 
