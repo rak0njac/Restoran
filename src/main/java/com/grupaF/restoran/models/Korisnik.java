@@ -21,6 +21,7 @@ public class Korisnik {
     private String adresa;
 
     @Column(name = "ime")
+    //@Pattern()
     @NotBlank(message= "Morate uneti ime")
     private String ime;
 

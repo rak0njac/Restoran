@@ -1,0 +1,71 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.w3.org/1999/xhtml">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css" integrity="sha384-Vkoo8x4CGsO3+Hhxv8T/Q5PaXtkKtu6ug5TOeNV6gBiFeWPGFN9MuhOf23Q9Ifjh" crossorigin="anonymous">
+    <style>
+        body {
+            background: url('http://209.97.163.112/wp-content/uploads/Singapore-Food-Photographer-Digitalnegative.jpg') no-repeat;
+            background-size: cover;
+            text-align: center;
+        }
+        .table {
+            border-collapse: collapse !important;
+            margin: 0px auto;
+            width: 80%;
+        }
+
+        .table td,
+        .table th {
+            background-color: #fff !important;
+        }
+        .table-bordered th,
+        .table-bordered td {
+            border: 1px solid #ddd !important;
+        }
+        .btn{
+            float: left;
+        }
+    </style>
+</head>
+<body>
+<header th:replace="fragments/header :: header">
+</header>
+
+<div th:switch="${proizvodi}">
+    <h2 style="color: white" th:case="null">Nema proizvoda!</h2>
+    <div th:case="*">
+        <h2 style="color: white; padding-left: 5px">Proizvodi</h2>
+        <table class="table">
+            <thead>
+            <tr>
+                <th>ID proizvoda</th>
+                <th>Naziv</th>
+                <th>Vrsta</th>
+                <th>Opis</th>
+                <th>Cena</th>
+                <th>Slika</th>
+                <th></th>
+                <th></th>
+            </tr>
+            </thead>
+            <tbody>
+            <tr th:each="proizvod : ${proizvodi}">
+                <td th:text="${proizvod.iDProizvod}"></td>
+                <td th:text="${proizvod.naziv}"></td>
+                <td th:text="${proizvod.vrsta}"></td>
+                <td th:text="${proizvod.opis}"></td>
+                <td th:text="${proizvod.cena}"></td>
+                <td><img th:src="@{${proizvod.slika}}" style="width: 50%; height: 150px"/></td>
+
+            </tr>
+            </tbody>
+        </table>
+    </div>
+</div>
+<script src="https://code.jquery.com/jquery-3.4.1.slim.min.js" integrity="sha384-J6qa4849blE2+poT4WnyKhv5vZF5SrPo0iEjwBvKU7imGFAV0wwj1yYfoRSJoZ+n" crossorigin="anonymous"></script>
+<script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.0/dist/umd/popper.min.js" integrity="sha384-Q6E9RHvbIyZFJoft+2mJbHaEWldlvI9IOYy5n3zV9zzTtmI3UksdQRVvoxMfooAo" crossorigin="anonymous"></script>
+<script src="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/js/bootstrap.min.js" integrity="sha384-wfSDF2E50Y2D1uUdj0O3uMBJnjuUD4Ih7YwaYd1iqfktj0Uod8GCExl3Og8ifwB6" crossorigin="anonymous"></script>
+</body>
+</html>

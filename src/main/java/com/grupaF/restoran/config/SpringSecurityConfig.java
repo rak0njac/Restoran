@@ -8,7 +8,9 @@ import org.springframework.security.config.annotation.web.builders.HttpSecurity;
 import org.springframework.security.config.annotation.web.configuration.EnableWebSecurity;
 import org.springframework.security.config.annotation.web.configuration.WebSecurityConfigurerAdapter;
 import org.springframework.security.core.Authentication;
-import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
+import org.springframework.security.core.userdetails.UserDetailsService;
+import org.springframework.security.crypto.password.NoOpPasswordEncoder;
+import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.security.web.access.AccessDeniedHandler;
 
 
@@ -21,29 +23,45 @@ public class SpringSecurityConfig  extends WebSecurityConfigurerAdapter {
 
     @Override
     protected void configure(HttpSecurity http) throws Exception{
-
+        //Autoritizacija - da li korisnik koji je ulogovan sme da pristupi ruti koja mu je data
         http.csrf().disable()
                 .authorizeRequests()
-                .antMatchers("/", "/index","/kontakt", "/login", "/registracija", "/403").permitAll()
+                //Gleda samo rute
+                .antMatchers("/", "/index","/kontakt", "/login", "/registracija", "/403", "/error1").permitAll()
                 .antMatchers("/img/**").permitAll()
-                .antMatchers("/korisnici", "/noviProizvod", "/proizvodi", "/updateProizvod").hasRole("ADMIN")
+                .antMatchers( "/korisnici", "/proizvodi", "/updateProizvod").hasRole("ADMIN")
+                .antMatchers("/dostava", "/proizvodiUser", "/licniKarton").hasRole("USER")
                 .anyRequest().authenticated()
                 .and()
                 .formLogin()
-                .loginPage("/loginSingin").permitAll()
+                .loginPage("/login").permitAll()
                 .and()
                 .logout()
                 .permitAll()
                 .and()
                 .exceptionHandling().accessDeniedHandler(accessDeniedHandler);
     }
+
     @Autowired
+    UserDetailsService  userDetailsService;
+    @Override
+    //Da vidi da li je taj korisnik zaista korisnik - Autentifikacija
+    protected void configure(AuthenticationManagerBuilder auth) throws Exception {
+        auth.userDetailsService(userDetailsService);
+
+    }
+    @Bean
+    public PasswordEncoder getPasswordEncoder(){
+        return NoOpPasswordEncoder.getInstance();
+    }
+
+    /* @Autowired
     public void configureGlobal(AuthenticationManagerBuilder auth) throws Exception{
         auth.inMemoryAuthentication()
                 .withUser("admin").password(passwordEncoder().encode("admin13")).roles("ADMIN");
     }
 
     @Bean
-    public BCryptPasswordEncoder passwordEncoder(){ return new BCryptPasswordEncoder();}
+    public BCryptPasswordEncoder passwordEncoder(){ return new BCryptPasswordEncoder();}*/
 
 }

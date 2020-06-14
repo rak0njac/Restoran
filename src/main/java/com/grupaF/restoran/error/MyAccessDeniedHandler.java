@@ -30,7 +30,7 @@ public class MyAccessDeniedHandler implements AccessDeniedHandler {
 
             logger.info("Korisnik '" + auth.getName() + "' nemate pristup zaštićenoj URL: " + request.getRequestURI());
         }
-       response.sendRedirect(request.getContextPath() + "/403");
+       response.sendRedirect( "error1");
 
     }
 }

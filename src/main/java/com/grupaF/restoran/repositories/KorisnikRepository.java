@@ -10,12 +10,7 @@ import java.util.Optional;
 public interface KorisnikRepository extends JpaRepository<Korisnik, Long> {
 
     Optional<Korisnik> findByUsernameAndPassword(String username, String password);
-//
-//    List<Korisnik> findByEmail(String email);
-//
-//    void delete(Korisnik korisnik);
-//
-//    void deleteById(Long iDKorisnik);
+    Optional<Korisnik> findByUsername(String username);
 
  @Modifying
  @Query("UPDATE Korisnik k SET k.adresa=?1, k.telefon=?2, k.email=?3, k.prezime=?4 WHERE k.iDKorisnik = ?5")

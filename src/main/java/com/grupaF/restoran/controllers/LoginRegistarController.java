@@ -23,7 +23,7 @@ public class LoginRegistarController {
     @GetMapping(value="/kontakt")
     public String kontakt(){return "kontakt"; }
 
-    @PostMapping(value = "/login")
+  /*  @PostMapping(value = "/login")
     public String login(@RequestParam String username, HttpSession session , @RequestParam String password, Model model){
         Optional<Korisnik> k = this.korisnikService.findByUsernameAndPassword(username, password);
         if(k.isPresent()){
@@ -40,7 +40,7 @@ public class LoginRegistarController {
         }
         else return "error1";
 
-    }
+    }*/
 
     @GetMapping(value="/registracija")
     public String reg(){return "loginSingin"; }
