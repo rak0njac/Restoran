@@ -12,7 +12,7 @@
     <div class="collapse navbar-collapse" id="navbarNav">
         <ul class="navbar-nav mr-auto">
             <li class="nav-item active">
-                <a class="nav-link" href="/">Početna strana</a>
+                <a class="nav-link" href="/">Pocetna strana</a>
             </li>
             <div sec:authorize="hasRole('ROLE_USER')">
             <li class="nav-item">
@@ -34,7 +34,7 @@
                 <a class="nav-link" href="/korisnici" >Korisnici</a>
             </li>
             </div>
-                <div sec:authorize="hasRole('ROLE_ADMIN')">
+            <div sec:authorize="hasRole('ROLE_ADMIN')">
             <li class="nav-item">
                 <a class="nav-link" href="/proizvodi" >Proizvodi</a>
             </li>
