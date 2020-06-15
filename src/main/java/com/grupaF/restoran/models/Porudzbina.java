@@ -24,6 +24,12 @@ public class Porudzbina {
     @Column(name = "vreme")
     private LocalTime vreme;
 
+    @ManyToOne
+    private Korisnik korisnik;
+
+    @OneToMany(mappedBy = "porudzbina")
+    Set<Porudzbina_proizvod> porudzbina_proizvods;
+
     public Korisnik getKorisnik() {
         return korisnik;
     }
@@ -31,12 +37,6 @@ public class Porudzbina {
     public void setKorisnik(Korisnik korisnik) {
         this.korisnik = korisnik;
     }
-
-    @ManyToOne
-    private Korisnik korisnik;
-
-    @OneToMany(mappedBy = "porudzbina")
-    Set<Porudzbina_proizvod> porudzbina_proizvods;
 
     public Set<Porudzbina_proizvod> getPorudzbina_proizvods() {
         return porudzbina_proizvods;

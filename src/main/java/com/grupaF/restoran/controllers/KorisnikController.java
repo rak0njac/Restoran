@@ -3,8 +3,11 @@ package com.grupaF.restoran.controllers;
 import com.grupaF.restoran.models.Korisnik;
 import com.grupaF.restoran.models.Proizvod;
 import com.grupaF.restoran.services.KorisnikService;
+import com.grupaF.restoran.services.MyUserDetails;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Value;
+import org.springframework.security.core.context.SecurityContextHolder;
+import org.springframework.security.core.userdetails.UserDetails;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.*;
@@ -68,13 +71,20 @@ public class KorisnikController {
         return "UpdateKorisnikLicniKarton";
     }
 
-  /*  @GetMapping("/getIdKorisnik")
+    @GetMapping("/getIdKorisnik")
     @ResponseBody
-    public String GetIdKor(HttpSession session)
+    public String GetIdKor()
     {
-        return session.getAttribute("id").toString();
+        Object principal = SecurityContextHolder.getContext().getAuthentication().getPrincipal();
+        Long id;
+        if (principal instanceof MyUserDetails) {
+            id = ((MyUserDetails)principal).getIdKorisnik();
+        } else {
+            id = ((Long) principal);
+        }
+        return id.toString();
         //return "1";
-    }*/
+    }
 
     @PostMapping("/editProfil")
     public String editProfil(@RequestParam("iDKorisnik") Long iDKorisnik,  @RequestParam("adresa") String adresa, @RequestParam("telefon") String telefon,

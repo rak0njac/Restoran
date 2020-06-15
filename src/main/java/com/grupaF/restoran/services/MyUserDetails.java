@@ -10,12 +10,14 @@ import java.util.Collection;
 
 public class MyUserDetails implements UserDetails {
 
+    private Long id;
     private String username;
     private String password;
     private String tip;
     public MyUserDetails(Korisnik korisnik){
         this.username = korisnik.getUsername();
         this.password = korisnik.getPassword();
+        this.id = korisnik.getiDKorisnik();
         this.tip = korisnik.getTip();
     }
 
@@ -38,6 +40,8 @@ public class MyUserDetails implements UserDetails {
     public String getUsername() {
         return this.username;
     }
+
+    public Long getIdKorisnik() {return id; }
 
     @Override
     public boolean isAccountNonExpired() {

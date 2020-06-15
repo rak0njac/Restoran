@@ -47,6 +47,11 @@
                 <a class="nav-link" href="/porudzbine" >Porudzbine</a>
             </li>
             </div>
+            <div sec:authorize="hasRole('ROLE_USER')">
+                <li class="nav-item">
+                    <a class="nav-link" href="/mojePorudzbine" >Moje porudzbine</a>
+                </li>
+            </div>
         </ul>
         <button onclick="location.href='/registracija'"
                 class="btn btn-primary">Login/Register</button>

@@ -13,7 +13,7 @@ import javax.servlet.http.HttpSession;
 import java.util.Optional;
 
 @Service
-public class MyUserDetailesService implements UserDetailsService {
+public class MyUserDetailsService implements UserDetailsService {
 
     @Autowired
     KorisnikRepository korisnikRepository;

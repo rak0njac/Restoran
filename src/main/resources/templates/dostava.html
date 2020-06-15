@@ -49,8 +49,19 @@
                     </thead>
                     <tbody id="pro" th:fragment="dostava">
                     <tr th:each="proizvod : ${proizvodi}">
-                        <td>
-                            <button class="btn btn-primary" th:text="${proizvod.naziv}" onclick="addToCart(this)"/>
+                        <td class="col-9">
+                            <div class="row">
+                                <button class="btn btn-link" th:text="${proizvod.naziv}" onclick="addToCart(this)"/>
+                            </div>
+                            <div class="row ml-3">
+                                <span th:text="${proizvod.opis}"/>
+                            </div>
+                            <div class="row ml-4">
+                                <span><b th:text="${proizvod.cena}">din</b></span>
+                            </div>
+                        </td>
+                        <td class="col-3">
+                            <img th:src="${proizvod.slika}"/>
                         </td>
                     </tr>
                     </tbody>
@@ -136,6 +147,7 @@
         //var items = $('#kor').find("td").text();
         $.get('/korisnici/getIdKorisnik',{},function (data) {
             var id_korisnik = data;
+            console.log('ID korisnika: ' + id_korisnik)
             $.post('/porudzbine/napravi', {
                 datum : date,
                 vreme : time,
@@ -159,7 +171,7 @@
                             kolicina : kolicina,
                             cena: '1337'
                         }, function () {
-                            window.location.replace("/porudzbine")
+                            window.location.replace("/mojePorudzbine/success/" + id_porudzbina)
                         })
                     }, "text")
 
