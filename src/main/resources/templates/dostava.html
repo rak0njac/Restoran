@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html lang="en" xmlns:th="http://www.w3.org/1999/xhtml">
+<html lang="en" xmlns:th="http://www.w3.org/1999/xhtml" xmlns:sec="http://www.w3.org/1999/xhtml">
 <head>
     <meta charset="UTF-8">
     <title>Restoran F - Dostava</title>
@@ -16,6 +16,12 @@
 <body>
 <header th:replace="fragments/header :: header">
 </header>
+<div sec:authorize="isAuthenticated()">
+    Sadržaj ove strane možete videti samo ako imate nalog!
+</div>
+<div sec:authorize="hasRole('ROLE_USER')">
+    Sadržaj ove strane može videti samo korisnik!
+</div>
     <div class="container">
         <div class="row bg-light">
             <div class="col col-3">

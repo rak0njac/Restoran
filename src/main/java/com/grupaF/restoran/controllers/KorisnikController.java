@@ -68,13 +68,13 @@ public class KorisnikController {
         return "UpdateKorisnikLicniKarton";
     }
 
-    @GetMapping("/getIdKorisnik")
+  /*  @GetMapping("/getIdKorisnik")
     @ResponseBody
     public String GetIdKor(HttpSession session)
     {
         return session.getAttribute("id").toString();
         //return "1";
-    }
+    }*/
 
     @PostMapping("/editProfil")
     public String editProfil(@RequestParam("iDKorisnik") Long iDKorisnik,  @RequestParam("adresa") String adresa, @RequestParam("telefon") String telefon,
