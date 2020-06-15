@@ -2,6 +2,7 @@ package com.grupaF.restoran.controllers;
 
 import com.grupaF.restoran.models.Korisnik;
 import com.grupaF.restoran.services.KorisnikService;
+import com.grupaF.restoran.services.MyUserDetails;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
@@ -16,6 +17,9 @@ public class LoginRegistarController {
 
     @Autowired
     private KorisnikService korisnikService;
+
+
+
 
    // @GetMapping(value="/licniKarton")
   //  public String profil(){return "licniKarton"; }
@@ -41,6 +45,7 @@ public class LoginRegistarController {
         else return "error1";
 
     }*/
+
   @RequestMapping("/error1")
   public String loginError(Model model) {
       model.addAttribute("loginError", true);
@@ -55,7 +60,7 @@ public class LoginRegistarController {
     }
 
 
-    @PostMapping(value = "/dodaj")
+    @PostMapping(value = "/registracija")
     public String dodaj(@RequestParam String username, @RequestParam String password, @RequestParam String ime, @RequestParam String prezime,
                         @RequestParam String telefon, @RequestParam String tip, @RequestParam String email,
                         @RequestParam String adresa, Model model)
