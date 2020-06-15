@@ -39,11 +39,9 @@
                 <a class="nav-link" href="/proizvodi" >Proizvodi</a>
             </li>
             </div>
-            <div sec:authorize="hasRole('ROLE_USER')">
             <li class="nav-item">
                 <a class="nav-link" href="/proizvodiUser" >Ponuda</a>
             </li>
-            </div>
             <div sec:authorize="hasRole('ROLE_ADMIN')">
             <li class="nav-item">
                 <a class="nav-link" href="/porudzbine" >Porudzbine</a>
