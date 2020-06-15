@@ -19,6 +19,7 @@
 <div class="container">
     <div class="row mt-5">
         <div class="col">
+            <p th:if="${loginError}" class="error"style="color:red; font-weight: bold;">Pogrešan username ili password</p>
             <form th:action="@{/login}" class="form-horizontal" method="post" onsubmit="Validacija()">
                 <h1>Logovanje</h1>
                 <div class="form-group">

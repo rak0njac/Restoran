@@ -41,7 +41,11 @@ public class LoginRegistarController {
         else return "error1";
 
     }*/
-
+  @RequestMapping("/error1")
+  public String loginError(Model model) {
+      model.addAttribute("loginError", true);
+      return "loginSingin";
+  }
     @GetMapping(value="/registracija")
     public String reg(){return "loginSingin"; }
 

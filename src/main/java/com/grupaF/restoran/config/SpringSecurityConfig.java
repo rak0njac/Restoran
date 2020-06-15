@@ -27,20 +27,22 @@ public class SpringSecurityConfig  extends WebSecurityConfigurerAdapter {
         http.csrf().disable()
                 .authorizeRequests()
                 //Gleda samo rute
-                .antMatchers("/", "/index","/kontakt", "/login", "/registracija", "/403", "/error1").permitAll()
+                .antMatchers("/", "/index","/kontakt", "/login", "/proizvodiUser", "/registracija", "/403", "/error1").permitAll()
                 .antMatchers("/img/**").permitAll()
                 .antMatchers( "/korisnici", "/proizvodi", "/porudzbine").hasRole("ADMIN")
-                .antMatchers("/dostava", "/proizvodiUser", "/licniKarton").hasRole("USER")
+                .antMatchers("/dostava", "/licniKarton").hasRole("USER")
                 .anyRequest().authenticated()
                 .and()
                 .formLogin()
-                .loginPage("/login").permitAll()
+                .loginPage("/login").failureForwardUrl("/error1")
+                .permitAll()
                 .and()
                 .logout()
                 .permitAll()
                 .and()
                 .exceptionHandling().accessDeniedHandler(accessDeniedHandler);
     }
+
 
     @Autowired
     UserDetailsService  userDetailsService;
