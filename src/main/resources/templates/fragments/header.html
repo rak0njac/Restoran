@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html xmlns:th="http://www.w3.org/1999/xhtml">
+<html xmlns:th="http://www.w3.org/1999/xhtml" xmlns:sec="http://www.w3.org/1999/xhtml">
 <head>
 
 </head>
@@ -14,27 +14,41 @@
             <li class="nav-item active">
                 <a class="nav-link" href="/">Početna strana</a>
             </li>
+            <div sec:authorize="hasRole('ROLE_USER')">
             <li class="nav-item">
                 <a class="nav-link" href="/dostava">Dostava</a>
             </li>
+            </div>
+            <div sec:authorize="hasRole('ROLE_USER')">
             <li class="nav-item">
                 <a class="nav-link" href="/kontakt">Kontakt</a>
             </li>
+            </div>
+            <div sec:authorize="hasRole('ROLE_USER')">
             <li class="nav-item">
                 <a class="nav-link" href="/licniKarton" >Profil</a>
             </li>
+            </div>
+            <div sec:authorize="hasRole('ROLE_ADMIN')">
             <li class="nav-item">
                 <a class="nav-link" href="/korisnici" >Korisnici</a>
             </li>
+            </div>
+                <div sec:authorize="hasRole('ROLE_ADMIN')">
             <li class="nav-item">
                 <a class="nav-link" href="/proizvodi" >Proizvodi</a>
             </li>
+            </div>
+            <div sec:authorize="hasRole('ROLE_USER')">
             <li class="nav-item">
-                <a class="nav-link" href="/proizvodiUser" >Proizvodi korisnik</a>
+                <a class="nav-link" href="/proizvodiUser" >Ponuda</a>
             </li>
+            </div>
+            <div sec:authorize="hasRole('ROLE_ADMIN')">
             <li class="nav-item">
                 <a class="nav-link" href="/porudzbine" >Porudzbine</a>
             </li>
+            </div>
         </ul>
         <button onclick="location.href='/registracija'"
                 class="btn btn-primary">Login/Register</button>

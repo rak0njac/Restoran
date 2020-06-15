@@ -6,21 +6,45 @@
     <title>Korisnici</title>
 
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css" integrity="sha384-Vkoo8x4CGsO3+Hhxv8T/Q5PaXtkKtu6ug5TOeNV6gBiFeWPGFN9MuhOf23Q9Ifjh" crossorigin="anonymous">
-    style{
-    .table {
-    border-collapse: collapse !important;
-    margin: 0px auto;
-    width: 80%;
+<style>
+    body {
+        background: url('http://209.97.163.112/wp-content/uploads/Singapore-Food-Photographer-Digitalnegative.jpg') no-repeat;
+        background-size: cover;
+        text-align: center;
     }
+    .table {
+        border-collapse: collapse !important;
+        margin: 0px auto;
+        width: 80%;
+    }
+
+    .table td,
+    .table th {
+        background-color: #fff !important;
+    }
+    .table-bordered th,
+    .table-bordered td {
+        border: 1px solid #ddd !important;
+    }
+</style>
 </head>
 <header th:replace="fragments/header :: header">
 </header>
-<h1 align="center">Korisnici</h1>
+<h1 style="color: red" align="center">Korisnici</h1>
 <p></p>
 
+<div>
+    <form action="/korisnici/getKorisnik">
+        <input name="myid" id="myid" type="text">
+        <input type="submit" value="pretraga"/>
+    </form>
+
+</div>
 <div th:switch="${korisnici}">
-    <h2 th:case="null">Nema korisnika!</h2>
+    <h2 style="color: red" th:case="null">Nema korisnika!</h2>
     <div th:case="*">
+
+
 
         <table class="table">
             <thead>
@@ -34,7 +58,6 @@
                 <th>Adresa</th>
                 <th></th>
                 <th></th>
-<!--                <th></th>-->
             </tr>
             </thead>
             <tbody>
@@ -48,7 +71,6 @@
                 <td th:text="${korisnik.adresa}"></td>
                 <td> <a href="#" th:href="@{/korisnici/delete/} + ${korisnik.iDKorisnik}">Obriši</a></td>
                 <td> <a href="#" th:href="@{/korisnici/edit/} + ${korisnik.iDKorisnik}">Izmeni</a></td>
-<!--                <td> <a href="#" th:href="@{/korisnici/getKorisnik/} + ${korisnik.iDKorisnik}">Prikaži</a></td>-->
             </tr>
             </tbody>
         </table>
@@ -56,17 +78,6 @@
     </div>
 </div>
 
-<div>
-    <form action="/korisnici/getKorisnik">
-        <input name="myid" id="myid" type="text">
-        <input type="submit" value="pretraga"/>
-    </form>
-
-<!--    <form action="#" th:action="@{/getKorisnik}" th:object="${korisnici}" method="post">-->
-<!--        <p>Id: <input type="text" th:field="*{iDKorisnik}" /></p>-->
-<!--        <p><input type="submit" value="Submit" /> <input type="reset" value="Reset" /></p>-->
-<!--    </form>-->
-</div>
 <script src="https://code.jquery.com/jquery-3.4.1.slim.min.js" integrity="sha384-J6qa4849blE2+poT4WnyKhv5vZF5SrPo0iEjwBvKU7imGFAV0wwj1yYfoRSJoZ+n" crossorigin="anonymous"></script>
 <script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.0/dist/umd/popper.min.js" integrity="sha384-Q6E9RHvbIyZFJoft+2mJbHaEWldlvI9IOYy5n3zV9zzTtmI3UksdQRVvoxMfooAo" crossorigin="anonymous"></script>
 <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/js/bootstrap.min.js" integrity="sha384-wfSDF2E50Y2D1uUdj0O3uMBJnjuUD4Ih7YwaYd1iqfktj0Uod8GCExl3Og8ifwB6" crossorigin="anonymous"></script>
